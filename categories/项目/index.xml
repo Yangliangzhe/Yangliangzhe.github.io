@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>项目 on YangLiangZhe&#39;s blog</title>
+    <link>https://Yangliangzhe.github.io/categories/%E9%A1%B9%E7%9B%AE/</link>
+    <description>Recent content in 项目 on YangLiangZhe&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 30 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://Yangliangzhe.github.io/categories/%E9%A1%B9%E7%9B%AE/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>遥感影像识别</title>
+      <link>https://Yangliangzhe.github.io/home/%E9%81%A5%E6%84%9F%E5%BD%B1%E5%83%8F%E8%AF%86%E5%88%AB/</link>
+      <pubDate>Thu, 30 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/home/%E9%81%A5%E6%84%9F%E5%BD%B1%E5%83%8F%E8%AF%86%E5%88%AB/</guid>
+      <description>&lt;p&gt;分析SAR图像中军用车辆目标的影像特征，设计目标识别的流程和算法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>综合图像处理系统</title>
+      <link>https://Yangliangzhe.github.io/home/%E7%BB%BC%E5%90%88%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/home/%E7%BB%BC%E5%90%88%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F/</guid>
+      <description>&lt;p&gt;这是一个基于plotly与flask搭建的综合图像处理系统。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>综合图像处理系统</title>
+      <link>https://Yangliangzhe.github.io/project/%E7%BB%BC%E5%90%88%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/project/%E7%BB%BC%E5%90%88%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F/</guid>
+      <description>&lt;p&gt;这是一个基于plotly与flask搭建的综合图像处理系统。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>BP神经网络</title>
+      <link>https://Yangliangzhe.github.io/cause/bp%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</link>
+      <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/cause/bp%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</guid>
+      <description>&lt;p&gt;手动搭建一个MLP网络，并实现手写数字的识别。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>BP神经网络</title>
+      <link>https://Yangliangzhe.github.io/home/bp%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</link>
+      <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/home/bp%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</guid>
+      <description>&lt;p&gt;手动搭建一个MLP网络，并实现手写数字的识别。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>遗传算法</title>
+      <link>https://Yangliangzhe.github.io/cause/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/cause/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/</guid>
+      <description>&lt;p&gt;利用遗传算法解决01背包问题。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>遗传算法</title>
+      <link>https://Yangliangzhe.github.io/home/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/home/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/</guid>
+      <description>&lt;p&gt;利用遗传算法解决01背包问题。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kmeans</title>
+      <link>https://Yangliangzhe.github.io/cause/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Sun, 04 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/cause/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kmeans</title>
+      <link>https://Yangliangzhe.github.io/home/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Sun, 04 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/home/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>基于树莓派的目标识别与跟踪系统</title>
+      <link>https://Yangliangzhe.github.io/home/%E5%9F%BA%E4%BA%8E%E6%A0%91%E8%8E%93%E6%B4%BE%E7%9A%84%E7%9B%AE%E6%A0%87%E8%AF%86%E5%88%AB%E4%B8%8E%E8%B7%9F%E8%B8%AA%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Sun, 04 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/home/%E5%9F%BA%E4%BA%8E%E6%A0%91%E8%8E%93%E6%B4%BE%E7%9A%84%E7%9B%AE%E6%A0%87%E8%AF%86%E5%88%AB%E4%B8%8E%E8%B7%9F%E8%B8%AA%E7%B3%BB%E7%BB%9F/</guid>
+      <description>&lt;p&gt;这是一个基于树莓派和卡尔曼滤波原理的，能够自动调动摄像头实时追踪目标的目标识别与跟踪系统。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>基于树莓派的目标识别与跟踪系统</title>
+      <link>https://Yangliangzhe.github.io/project/%E5%9F%BA%E4%BA%8E%E6%A0%91%E8%8E%93%E6%B4%BE%E7%9A%84%E7%9B%AE%E6%A0%87%E8%AF%86%E5%88%AB%E4%B8%8E%E8%B7%9F%E8%B8%AA%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Sun, 04 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/project/%E5%9F%BA%E4%BA%8E%E6%A0%91%E8%8E%93%E6%B4%BE%E7%9A%84%E7%9B%AE%E6%A0%87%E8%AF%86%E5%88%AB%E4%B8%8E%E8%B7%9F%E8%B8%AA%E7%B3%BB%E7%BB%9F/</guid>
+      <description>&lt;p&gt;这是一个基于树莓派和卡尔曼滤波原理的，能够自动调动摄像头实时追踪目标的目标识别与跟踪系统。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

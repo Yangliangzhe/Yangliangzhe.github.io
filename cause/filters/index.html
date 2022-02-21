@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/Yangliangzhe.github.io",
+  "author": {
+    "@type": "Person",
+    "name": "LiangZhe Yang",
+    
+    "image": "https://Yangliangzhe.github.io/images/profile.jpg"
+    
+  },
+  "name":"YangLiangZhe\u0027s blog",
+  "description":"\u003cp\u003e针对给定的输入图像，根据均值或者中值滤波的原理，利用Matlab和\/或C\u002b\u002b等编程语言完成图像均值或者中值滤波的编程实现，同时分别显示输入图像、含噪声图像和均值或者中值滤波后的图像，观察和分析图像均值或者中值滤波结果。\u003c\/p\u003e",
+  "url":"https:\/\/Yangliangzhe.github.io\/cause\/filters\/",
+  "keywords":"[]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.92.0 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="LiangZhe Yang">
+<meta name="keywords" content="">
+<meta name="description" content="针对给定的输入图像，根据均值或者中值滤波的原理，利用Matlab和/或C&#43;&#43;等编程语言完成图像均值或者中值滤波的编程实现，同时分别显示输入图像、含噪声图像和均值或者中值滤波后的图像，观察和分析图像均值或者中值滤波结果。">
+
+
+<meta property="og:description" content="针对给定的输入图像，根据均值或者中值滤波的原理，利用Matlab和/或C&#43;&#43;等编程语言完成图像均值或者中值滤波的编程实现，同时分别显示输入图像、含噪声图像和均值或者中值滤波后的图像，观察和分析图像均值或者中值滤波结果。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图像平滑滤波">
+<meta name="twitter:title" content="图像平滑滤波">
+<meta property="og:url" content="https://Yangliangzhe.github.io/cause/filters/">
+<meta property="twitter:url" content="https://Yangliangzhe.github.io/cause/filters/">
+<meta property="og:site_name" content="YangLiangZhe&#39;s blog">
+<meta property="og:description" content="针对给定的输入图像，根据均值或者中值滤波的原理，利用Matlab和/或C&#43;&#43;等编程语言完成图像均值或者中值滤波的编程实现，同时分别显示输入图像、含噪声图像和均值或者中值滤波后的图像，观察和分析图像均值或者中值滤波结果。">
+<meta name="twitter:description" content="针对给定的输入图像，根据均值或者中值滤波的原理，利用Matlab和/或C&#43;&#43;等编程语言完成图像均值或者中值滤波的编程实现，同时分别显示输入图像、含噪声图像和均值或者中值滤波后的图像，观察和分析图像均值或者中值滤波结果。">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2021-12-07T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2021-12-07T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="实验">
+    
+      <meta property="article:section" content="图像处理">
+    
+  
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://Yangliangzhe.github.io/images/profile.jpg">
+  <meta property="twitter:image" content="https://Yangliangzhe.github.io/images/profile.jpg">
+
+
+
+
+  <meta property="og:image" content="https://Yangliangzhe.github.io/images/Filter2.jpg">
+  <meta property="twitter:image" content="https://Yangliangzhe.github.io/images/Filter2.jpg">
+
+
+  <meta property="og:image" content="https://Yangliangzhe.github.io/images/Filter3.jpg">
+  <meta property="twitter:image" content="https://Yangliangzhe.github.io/images/Filter3.jpg">
+
+
+    <title>图像平滑滤波</title>
+
+    <link rel="icon" href="https://Yangliangzhe.github.io/images/logo.png">
+    
+
+    
+
+    <link rel="canonical" href="https://Yangliangzhe.github.io/cause/filters/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://Yangliangzhe.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+    
+    
+
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="1">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://Yangliangzhe.github.io/" aria-label="去首页">YangLiangZhe&#39;s blog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://Yangliangzhe.github.io/#about" aria-label="打开链接: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://Yangliangzhe.github.io/images/profile.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="1">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://Yangliangzhe.github.io/#about" aria-label="阅读有关作者的更多信息">
+          <img class="sidebar-profile-picture" src="https://Yangliangzhe.github.io/images/profile.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">LiangZhe Yang</h4>
+        
+          <h5 class="sidebar-profile-bio">I am interested in Computer Vision and have a broad study on it</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/home" title="主页">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">主页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/cause" title="课程">
+    
+      <i class="sidebar-button-icon fas fa-atlas" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">课程</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/project" title="项目">
+    
+      <i class="sidebar-button-icon far fa-calendar-alt" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">项目</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/paper" title="论文">
+    
+      <i class="sidebar-button-icon fas fa-sticky-note" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">论文</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/tags" title="标签">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/categories" title="类别">
+    
+      <i class="sidebar-button-icon fas fa-code-branch" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">类别</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.zhihu.com/people/fang-xue-che" target="_blank" rel="noopener" title="博客">
+    
+      <i class="sidebar-button-icon far fa-blog" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">博客</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Yangliangzhe" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/#about" title="名片">
+    
+      <i class="sidebar-button-icon fas fa-address-card" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">名片</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('/images/Filter2.jpg')"
+       data-behavior="1">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      图像平滑滤波
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2021-12-07T00:00:00Z">
+        
+  十二月 7, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://Yangliangzhe.github.io/categories/%e5%ae%9e%e9%aa%8c">实验</a>, 
+    
+      <a class="category-link" href="https://Yangliangzhe.github.io/categories/%e5%9b%be%e5%83%8f%e5%a4%84%e7%90%86">图像处理</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="1"
+        class="hasCover
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>针对给定的输入图像，根据均值或者中值滤波的原理，利用Matlab和/或C++等编程语言完成图像均值或者中值滤波的编程实现，同时分别显示输入图像、含噪声图像和均值或者中值滤波后的图像，观察和分析图像均值或者中值滤波结果。</p>
+<h1 id="实验3-均值和中值滤波">实验3 均值和中值滤波</h1>
+<h2 id="一导入图片">一、导入图片</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">import</span> random
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;.\Images</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">Lab3</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#39;</span>
+
+girl <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>imread(path<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;girl.bmp&#39;</span>)
+Letters <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>imread(path<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;Letters-a.jpg&#39;</span>)
+pattern <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>imread(path<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;original_pattern.jpg&#39;</span>)
+lotus <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>imread(path<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;lotus.bmp&#39;</span>)
+
+plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">20.0</span>, <span style="color:#ae81ff">8.0</span>) 
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">1</span>)
+plt<span style="color:#f92672">.</span>imshow(girl, <span style="color:#e6db74">&#39;gray&#39;</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;girl&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">2</span>)
+plt<span style="color:#f92672">.</span>imshow(Letters, <span style="color:#e6db74">&#39;gray&#39;</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Letters&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">3</span>)
+plt<span style="color:#f92672">.</span>imshow(pattern, <span style="color:#e6db74">&#39;gray&#39;</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;pattern&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">4</span>)
+plt<span style="color:#f92672">.</span>imshow(lotus, <span style="color:#e6db74">&#39;gray&#39;</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;lotus&#39;</span>)
+</code></pre></div><pre><code>Text(0.5, 1.0, 'lotus')
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_3_1.png" alt="png"></p>
+<h2 id="二定义方法类">二、定义方法类</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Conv2D</span>():
+    <span style="color:#75715e">#支持批量处理多通道的图像，同时支持多卷积核操作，支持Pooling操作</span>
+    <span style="color:#75715e">#*********Padding**********#</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__zero_pad</span>(X, pad, value<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>):
+        X_pad <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>pad(X,((<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>),(pad,pad),(pad,pad),(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>)), <span style="color:#e6db74">&#39;constant&#39;</span>, constant_values <span style="color:#f92672">=</span> (value,value))
+        <span style="color:#75715e"># batch维度不填充，长宽同宽填充，通道不填充，填充值为0</span>
+        <span style="color:#66d9ef">return</span> X_pad
+    
+    <span style="color:#75715e">#**********conv***********#</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__conv_single_step</span>(image_slice, W):
+        s <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>multiply(image_slice, W)
+        Z <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sum(s)
+
+        <span style="color:#66d9ef">return</span> Z
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__conv_steps</span>(images, pad, stride, filter):
+        (batch, height, width, inchannels_num) <span style="color:#f92672">=</span> images<span style="color:#f92672">.</span>shape
+        (f_h, f_w, _, outchannels_num) <span style="color:#f92672">=</span> filter<span style="color:#f92672">.</span>shape
+        n_H <span style="color:#f92672">=</span> int((height<span style="color:#f92672">-</span>f_h<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>pad)<span style="color:#f92672">/</span>stride)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+        n_W <span style="color:#f92672">=</span> int((width<span style="color:#f92672">-</span>f_w<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>pad)<span style="color:#f92672">/</span>stride)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+
+        Z <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((batch, n_H, n_W, outchannels_num))
+
+        images_pad <span style="color:#f92672">=</span> Conv2D<span style="color:#f92672">.</span>__zero_pad(images, pad)
+        
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(batch):
+            image_pad <span style="color:#f92672">=</span> images_pad[i]
+            <span style="color:#66d9ef">for</span> h <span style="color:#f92672">in</span> range(n_H):
+                <span style="color:#66d9ef">for</span> w <span style="color:#f92672">in</span> range(n_W):
+                    <span style="color:#66d9ef">for</span> c <span style="color:#f92672">in</span> range(outchannels_num):
+                        vert_start <span style="color:#f92672">=</span> h<span style="color:#f92672">*</span>stride
+                        vert_end <span style="color:#f92672">=</span> vert_start<span style="color:#f92672">+</span>f_h
+                        horiz_start <span style="color:#f92672">=</span> w<span style="color:#f92672">*</span>stride
+                        horiz_end <span style="color:#f92672">=</span> horiz_start<span style="color:#f92672">+</span>f_w
+                        image_slice <span style="color:#f92672">=</span> image_pad[vert_start:vert_end,horiz_start:horiz_end,:]
+                        Z[i, h, w, c] <span style="color:#f92672">=</span> Conv2D<span style="color:#f92672">.</span>__conv_single_step(image_slice, filter[:,:,:,c])
+        <span style="color:#66d9ef">return</span> Z     
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__conv_forward</span>(images, filter, Isbatch<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, stride<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, pad<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>):
+        inDimension <span style="color:#f92672">=</span> len(images<span style="color:#f92672">.</span>shape)
+        outDimension <span style="color:#f92672">=</span> len(filter<span style="color:#f92672">.</span>shape)
+
+        <span style="color:#66d9ef">if</span>(inDimension<span style="color:#f92672">==</span><span style="color:#ae81ff">4</span>): <span style="color:#75715e">#多通道图像的批量处理</span>
+            (batch, height, width, inchannels_num) <span style="color:#f92672">=</span> images<span style="color:#f92672">.</span>shape
+            <span style="color:#66d9ef">if</span>(outDimension<span style="color:#f92672">==</span><span style="color:#ae81ff">4</span>):
+                (f_h, f_w, _, outchannels_num) <span style="color:#f92672">=</span> filter<span style="color:#f92672">.</span>shape
+            <span style="color:#66d9ef">elif</span>(outDimension<span style="color:#f92672">==</span><span style="color:#ae81ff">3</span>):
+                (f_h, f_w, _) <span style="color:#f92672">=</span> filter<span style="color:#f92672">.</span>shape
+                outchannels_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                filter <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(filter, axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+            <span style="color:#66d9ef">else</span>:
+                <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#39;The filter must have the same number of channels as input image!&#39;</span>)
+            <span style="color:#66d9ef">return</span> Conv2D<span style="color:#f92672">.</span>__conv_steps(images, pad, stride, filter)
+                
+        <span style="color:#66d9ef">elif</span>(inDimension<span style="color:#f92672">==</span><span style="color:#ae81ff">3</span>):
+            <span style="color:#66d9ef">if</span>(Isbatch): <span style="color:#75715e">#灰度图像的批量处理</span>
+                (batch, height, width) <span style="color:#f92672">=</span> images<span style="color:#f92672">.</span>shape
+                inchannels_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                images <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(images, axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+                <span style="color:#66d9ef">if</span>(outDimension<span style="color:#f92672">==</span><span style="color:#ae81ff">3</span>):
+                    (f_h, f_w, outchannels_num) <span style="color:#f92672">=</span> filter<span style="color:#f92672">.</span>shape
+                    filter <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(filter, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+                <span style="color:#66d9ef">elif</span>(outDimension<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>):
+                    (f_h, f_w) <span style="color:#f92672">=</span> filter<span style="color:#f92672">.</span>shape
+                    outchannels_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                    filter <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(filter, axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+                    filter <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(filter, axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+                <span style="color:#66d9ef">else</span>:
+                    <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#39;The filter must have the same dimension as input image!&#39;</span>)
+                <span style="color:#66d9ef">return</span> Conv2D<span style="color:#f92672">.</span>__conv_steps(images, pad, stride, filter)[:,:,:,<span style="color:#ae81ff">0</span>]
+
+            <span style="color:#66d9ef">else</span>: <span style="color:#75715e">#单个样本的多通道图像处理</span>
+                (height, width, inchannels_num) <span style="color:#f92672">=</span> images<span style="color:#f92672">.</span>shape
+                batch <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                images <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(images, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+                <span style="color:#66d9ef">if</span>(outDimension<span style="color:#f92672">==</span><span style="color:#ae81ff">4</span>):
+                    (f_h, f_w, _, outchannels_num) <span style="color:#f92672">=</span> filter<span style="color:#f92672">.</span>shape
+                <span style="color:#66d9ef">elif</span>(outDimension<span style="color:#f92672">==</span><span style="color:#ae81ff">3</span>):
+                    (f_h, f_w, _) <span style="color:#f92672">=</span> filter<span style="color:#f92672">.</span>shape
+                    outchannels_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                    filter <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(filter, axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+                <span style="color:#66d9ef">else</span>:
+                    <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#39;The filter must have the same number of channels as input image!&#39;</span>)
+                <span style="color:#66d9ef">return</span> Conv2D<span style="color:#f92672">.</span>__conv_steps(images, pad, stride, filter)[<span style="color:#ae81ff">0</span>,:,:,:]
+
+        <span style="color:#66d9ef">elif</span>(inDimension<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>): <span style="color:#75715e">#单张灰度图像的处理</span>
+            (height, width) <span style="color:#f92672">=</span> images<span style="color:#f92672">.</span>shape
+            images <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(images, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+            images <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(images, axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+            inchannels_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; batch <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+            <span style="color:#66d9ef">if</span>(outDimension<span style="color:#f92672">==</span><span style="color:#ae81ff">3</span>):
+                (f_h, f_w, outchannels_num) <span style="color:#f92672">=</span> filter<span style="color:#f92672">.</span>shape
+                filter <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(filter, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+            <span style="color:#66d9ef">elif</span>(outDimension<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>):
+                (f_h, f_w) <span style="color:#f92672">=</span> filter<span style="color:#f92672">.</span>shape
+                outchannels_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                filter <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(filter, axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+                filter <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(filter, axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+            <span style="color:#66d9ef">else</span>:
+                <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#39;The filter must have the same dimension as input image!&#39;</span>)
+            <span style="color:#66d9ef">return</span> Conv2D<span style="color:#f92672">.</span>__conv_steps(images, pad, stride, filter)[<span style="color:#ae81ff">0</span>,:,:,<span style="color:#ae81ff">0</span>]
+
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#34;Dimension Error!&#34;</span>)
+            <span style="color:#66d9ef">return</span> 
+
+    <span style="color:#75715e">#**********Pooling**********#</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__pool_steps</span>(images, pad, stride, f, oper<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mean&#39;</span>):
+        (batch, height, width, inchannels_num) <span style="color:#f92672">=</span> images<span style="color:#f92672">.</span>shape
+        n_H <span style="color:#f92672">=</span> int((height<span style="color:#f92672">-</span>f<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>pad)<span style="color:#f92672">/</span>stride)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+        n_W <span style="color:#f92672">=</span> int((width<span style="color:#f92672">-</span>f<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>pad)<span style="color:#f92672">/</span>stride)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+
+        Z <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((batch, n_H, n_W, inchannels_num), dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>uint8)
+
+        images_pad <span style="color:#f92672">=</span> Conv2D<span style="color:#f92672">.</span>__zero_pad(images, pad)
+
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(batch):
+            image_pad <span style="color:#f92672">=</span> images_pad[i]
+            <span style="color:#66d9ef">for</span> h <span style="color:#f92672">in</span> range(n_H):
+                <span style="color:#66d9ef">for</span> w <span style="color:#f92672">in</span> range(n_W):
+                        vert_start <span style="color:#f92672">=</span> h<span style="color:#f92672">*</span>stride
+                        vert_end <span style="color:#f92672">=</span> vert_start<span style="color:#f92672">+</span>f
+                        horiz_start <span style="color:#f92672">=</span> w<span style="color:#f92672">*</span>stride
+                        horiz_end <span style="color:#f92672">=</span> horiz_start<span style="color:#f92672">+</span>f
+                        image_slice <span style="color:#f92672">=</span> image_pad[vert_start:vert_end,horiz_start:horiz_end,:]
+                        <span style="color:#66d9ef">if</span>(oper<span style="color:#f92672">==</span><span style="color:#e6db74">&#39;mean&#39;</span>):
+                            Z[i, h, w, :] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>around(np<span style="color:#f92672">.</span>mean(image_slice, axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>)))
+                        <span style="color:#66d9ef">elif</span>(oper<span style="color:#f92672">==</span><span style="color:#e6db74">&#39;median&#39;</span>):
+                            Z[i, h, w, :] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>around(np<span style="color:#f92672">.</span>median(image_slice, axis<span style="color:#f92672">=</span>[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>]))
+                        <span style="color:#66d9ef">elif</span>(oper<span style="color:#f92672">==</span><span style="color:#e6db74">&#39;max&#39;</span>): 
+                            Z[i, h, w, :] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>around(np<span style="color:#f92672">.</span>max(image_slice, axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>)))
+                        <span style="color:#66d9ef">else</span>:
+                            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#39;Please Enter fiterType as </span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">mean</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74"> or </span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">median</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74"> or </span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">max</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">&#39;</span>)
+
+        <span style="color:#66d9ef">return</span> Z
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__pool_forward</span>(images, f, oper<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mean&#39;</span>, Isbatch<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, stride<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, pad<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>):
+        inDimension <span style="color:#f92672">=</span> len(images<span style="color:#f92672">.</span>shape)
+
+        <span style="color:#66d9ef">if</span>(inDimension<span style="color:#f92672">==</span><span style="color:#ae81ff">4</span>): <span style="color:#75715e">#多通道图像的批量处理</span>
+            (batch, height, width, inchannels_num) <span style="color:#f92672">=</span> images<span style="color:#f92672">.</span>shape
+            <span style="color:#66d9ef">return</span> Conv2D<span style="color:#f92672">.</span>__pool_steps(images, pad, stride, f, oper)
+                
+        <span style="color:#66d9ef">elif</span>(inDimension<span style="color:#f92672">==</span><span style="color:#ae81ff">3</span>):
+            <span style="color:#66d9ef">if</span>(Isbatch): <span style="color:#75715e">#灰度图像的批量处理</span>
+                (batch, height, width) <span style="color:#f92672">=</span> images<span style="color:#f92672">.</span>shape
+                inchannels_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                images <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(images, axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+                <span style="color:#66d9ef">return</span> Conv2D<span style="color:#f92672">.</span>__pool_steps(images, pad, stride, f, oper)[:,:,:,<span style="color:#ae81ff">0</span>]
+
+            <span style="color:#66d9ef">else</span>: <span style="color:#75715e">#单个样本的多通道图像处理</span>
+                (height, width, inchannels_num) <span style="color:#f92672">=</span> images<span style="color:#f92672">.</span>shape
+                batch <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                images <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(images, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+                <span style="color:#66d9ef">return</span> Conv2D<span style="color:#f92672">.</span>__pool_steps(images, pad, stride, f, oper)[<span style="color:#ae81ff">0</span>,:,:,:]
+
+        <span style="color:#66d9ef">elif</span>(inDimension<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>): <span style="color:#75715e">#单张灰度图像的处理</span>
+            (height, width) <span style="color:#f92672">=</span> images<span style="color:#f92672">.</span>shape
+            images <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(images, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+            images <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(images, axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+            inchannels_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; batch <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+            <span style="color:#66d9ef">return</span> Conv2D<span style="color:#f92672">.</span>__pool_steps(images, pad, stride, f, oper)[<span style="color:#ae81ff">0</span>,:,:,<span style="color:#ae81ff">0</span>]
+
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#34;Dimension Error!&#34;</span>)
+            <span style="color:#66d9ef">return</span>    
+    
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">conv</span>(images, filter, Isbatch<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, stride<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, pad<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>):
+        Z <span style="color:#f92672">=</span> Conv2D<span style="color:#f92672">.</span>__conv_forward(images, filter, Isbatch, stride, pad)
+
+        <span style="color:#66d9ef">return</span> Z
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">pool</span>(images, f, oper<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mean&#39;</span>, Isbatch<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, stride<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, pad<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>):
+        Z <span style="color:#f92672">=</span> Conv2D<span style="color:#f92672">.</span>__pool_forward(images, f, oper, Isbatch, stride, pad)
+
+        <span style="color:#66d9ef">return</span> Z
+
+
+</code></pre></div><h2 id="三定义滤波器类">三、定义滤波器类</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Filter</span>(Conv2D):
+    <span style="color:#75715e">#针对本实验的类, 只支持中值和均值滤波</span>
+    <span style="color:#66d9ef">def</span> __init__(self, image):
+        self<span style="color:#f92672">.</span>image <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>uint8(image)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">filter</span>(self, filtersize<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, filterType<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mean&#39;</span>, Isbatch<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, stride<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, pad<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>):
+        <span style="color:#75715e">#f = np.ones([filtersize, filtersize])/(filtersize**2)</span>
+        <span style="color:#75715e">#return Conv2D.conv(self.image, f)</span>
+        <span style="color:#66d9ef">return</span> Filter(Conv2D<span style="color:#f92672">.</span>pool(self<span style="color:#f92672">.</span>image, filtersize, filterType, Isbatch, stride, pad))
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sp_noise</span>(self, prob<span style="color:#f92672">=</span><span style="color:#ae81ff">0.002</span>):
+        <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">        添加椒盐噪声
+</span><span style="color:#e6db74">        prob:噪声比例
+</span><span style="color:#e6db74">        &#39;&#39;&#39;</span>
+        output <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(self<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>shape, np<span style="color:#f92672">.</span>uint8)
+        thres <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> prob
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]):
+            <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]):
+                rdn <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>random()
+                <span style="color:#66d9ef">if</span> rdn <span style="color:#f92672">&lt;</span> prob:
+                    output[i][j] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+                <span style="color:#66d9ef">elif</span> rdn <span style="color:#f92672">&gt;</span> thres:
+                    output[i][j] <span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>
+                <span style="color:#66d9ef">else</span>:
+                    output[i][j] <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>image[i][j]
+        <span style="color:#66d9ef">return</span> Filter(output)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gasuss_noise</span>(self, mean<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, var<span style="color:#f92672">=</span><span style="color:#ae81ff">0.002</span>, vis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>):
+        <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">            添加高斯噪声
+</span><span style="color:#e6db74">            mean : 均值
+</span><span style="color:#e6db74">            var : 方差
+</span><span style="color:#e6db74">        &#39;&#39;&#39;</span>
+        image <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(self<span style="color:#f92672">.</span>image<span style="color:#f92672">/</span><span style="color:#ae81ff">255</span>, dtype<span style="color:#f92672">=</span>float)
+        noise <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(mean, var <span style="color:#f92672">**</span> <span style="color:#ae81ff">0.5</span>, self<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>shape)
+        out <span style="color:#f92672">=</span> image <span style="color:#f92672">+</span> noise
+        <span style="color:#66d9ef">if</span> out<span style="color:#f92672">.</span>min() <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>:
+            low_clip <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>
+        <span style="color:#66d9ef">else</span>:
+            low_clip <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>
+        out <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>clip(out, low_clip, <span style="color:#ae81ff">1.0</span>)
+        out <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>uint8(out<span style="color:#f92672">*</span><span style="color:#ae81ff">255</span>)
+        <span style="color:#66d9ef">if</span>(vis):
+            plt<span style="color:#f92672">.</span>imshow(<span style="color:#e6db74">&#34;gasuss&#34;</span>, out)
+        
+        <span style="color:#66d9ef">return</span> Filter(out)
+</code></pre></div><h2 id="四定义测试函数">四、定义测试函数</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test</span>(image, filtersize, times<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, prob<span style="color:#f92672">=</span><span style="color:#ae81ff">0.002</span>, var<span style="color:#f92672">=</span><span style="color:#ae81ff">0.002</span>):
+    image_f_mean <span style="color:#f92672">=</span> Filter(image)
+    image_f_median <span style="color:#f92672">=</span> Filter(image)
+    image_sp_mean <span style="color:#f92672">=</span> image_f_mean<span style="color:#f92672">.</span>sp_noise(prob)
+    image_gasuss_mean <span style="color:#f92672">=</span> image_f_mean<span style="color:#f92672">.</span>gasuss_noise(var)
+    image_sp_median <span style="color:#f92672">=</span> image_f_median<span style="color:#f92672">.</span>sp_noise(prob)
+    image_gasuss_median <span style="color:#f92672">=</span> image_f_median<span style="color:#f92672">.</span>gasuss_noise(var)
+    
+    plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>) 
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(times):
+        <span style="color:#66d9ef">if</span>(i<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>):
+            plt<span style="color:#f92672">.</span>figure()
+            plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>)
+            plt<span style="color:#f92672">.</span>imshow(image_f_median<span style="color:#f92672">.</span>image, <span style="color:#e6db74">&#39;gray&#39;</span>)
+            plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Original&#39;</span>)
+            plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>)
+            plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;sp_noise&#39;</span>)
+            plt<span style="color:#f92672">.</span>imshow(image_sp_median<span style="color:#f92672">.</span>image, <span style="color:#e6db74">&#39;gray&#39;</span>)
+            plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>)
+            plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;gasuss_noise&#39;</span>)
+            plt<span style="color:#f92672">.</span>imshow(image_gasuss_median<span style="color:#f92672">.</span>image, <span style="color:#e6db74">&#39;gray&#39;</span>)
+
+        plt<span style="color:#f92672">.</span>figure()
+        plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>)
+        image_f_mean <span style="color:#f92672">=</span> image_f_mean<span style="color:#f92672">.</span>filter(filtersize, <span style="color:#e6db74">&#39;mean&#39;</span>)
+        plt<span style="color:#f92672">.</span>imshow(image_f_mean<span style="color:#f92672">.</span>image, <span style="color:#e6db74">&#39;gray&#39;</span>)
+        plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Original mean filter&#39;</span> <span style="color:#f92672">+</span> str(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>))
+        plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>)
+        image_sp_mean <span style="color:#f92672">=</span> image_sp_mean<span style="color:#f92672">.</span>filter(filtersize, <span style="color:#e6db74">&#39;mean&#39;</span>)
+        plt<span style="color:#f92672">.</span>imshow(image_sp_mean<span style="color:#f92672">.</span>image, <span style="color:#e6db74">&#39;gray&#39;</span>)
+        plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;sp_noise mean filter&#39;</span> <span style="color:#f92672">+</span> str(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>))
+        plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>)
+        image_gasuss_mean <span style="color:#f92672">=</span> image_gasuss_mean<span style="color:#f92672">.</span>filter(filtersize, <span style="color:#e6db74">&#39;mean&#39;</span>)
+        plt<span style="color:#f92672">.</span>imshow(image_gasuss_mean<span style="color:#f92672">.</span>image, <span style="color:#e6db74">&#39;gray&#39;</span>)
+        plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;gasuss_noise mean filter&#39;</span> <span style="color:#f92672">+</span> str(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>))
+
+    <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(times):
+        <span style="color:#66d9ef">if</span>(j<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">and</span> times<span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">2</span>):
+            plt<span style="color:#f92672">.</span>figure()
+            plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>)
+            plt<span style="color:#f92672">.</span>imshow(image_f_median<span style="color:#f92672">.</span>image, <span style="color:#e6db74">&#39;gray&#39;</span>)
+            plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Original&#39;</span>)
+            plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>)
+            plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;sp_noise&#39;</span>)
+            plt<span style="color:#f92672">.</span>imshow(image_sp_median<span style="color:#f92672">.</span>image, <span style="color:#e6db74">&#39;gray&#39;</span>)
+            plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>)
+            plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;gasuss_noise&#39;</span>)
+            plt<span style="color:#f92672">.</span>imshow(image_gasuss_median<span style="color:#f92672">.</span>image, <span style="color:#e6db74">&#39;gray&#39;</span>)
+            print(<span style="color:#e6db74">&#39;图片尺寸：&#39;</span>)
+
+        plt<span style="color:#f92672">.</span>figure()
+        plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>)
+        image_f_median <span style="color:#f92672">=</span> image_f_median<span style="color:#f92672">.</span>filter(filtersize, <span style="color:#e6db74">&#39;median&#39;</span>)
+        plt<span style="color:#f92672">.</span>imshow(image_f_median<span style="color:#f92672">.</span>image, <span style="color:#e6db74">&#39;gray&#39;</span>)
+        plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Original median filter&#39;</span> <span style="color:#f92672">+</span> str(j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>))
+        plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>)
+        image_sp_median <span style="color:#f92672">=</span> image_sp_median<span style="color:#f92672">.</span>filter(filtersize, <span style="color:#e6db74">&#39;median&#39;</span>)
+        plt<span style="color:#f92672">.</span>imshow(image_sp_median<span style="color:#f92672">.</span>image, <span style="color:#e6db74">&#39;gray&#39;</span>)
+        plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;sp_noise median filter &#39;</span><span style="color:#f92672">+</span> str(j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>))
+        plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>)
+        image_gasuss_median <span style="color:#f92672">=</span> image_gasuss_median<span style="color:#f92672">.</span>filter(filtersize, <span style="color:#e6db74">&#39;median&#39;</span>)
+        plt<span style="color:#f92672">.</span>imshow(image_gasuss_median<span style="color:#f92672">.</span>image, <span style="color:#e6db74">&#39;gray&#39;</span>)
+        plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;gasuss_noise median filter&#39;</span> <span style="color:#f92672">+</span> str(j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>))
+        <span style="color:#66d9ef">if</span>(times<span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">2</span>): print(image_f_median<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>shape)
+
+
+</code></pre></div><h2 id="五滤波结果及分析">五、滤波结果及分析</h2>
+<h3 id="51-滤波器比较">5.1 滤波器比较</h3>
+<h4 id="511-girl">5.1.1 Girl</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"> test(girl, <span style="color:#ae81ff">3</span>, prob<span style="color:#f92672">=</span><span style="color:#ae81ff">0.005</span>, var<span style="color:#f92672">=</span><span style="color:#ae81ff">0.005</span>)
+</code></pre></div><p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_13_0.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_13_1.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_13_2.png" alt="png"></p>
+<p>从输出可以看出均值滤波对椒盐噪声的滤除效果并不彻底，仍然存在肉眼可见的黑白斑点，而中值滤波能够很好的滤除椒盐噪声。
+而对于高斯噪声，观察图片左上角女性的头发处，可以看到中值滤波和均值滤波对高斯噪声的滤除效果都不够彻底。其中均值滤波能够冲淡高斯噪声的灰度值，但噪声分布较广；而中值滤波虽然噪声的灰度值不变，比较突兀，但是噪声的分布范围相对较窄。</p>
+<p>1、 这是因为中值滤波是取每个像素周边区域的中间值来取代该像素点的灰度值，因此其会保留灰度值不变，同时其对孤立的噪声点有很好的滤除效果；均值滤波是对每个像素周边区域取均值来替代像素的灰度值，因此其只能对图像起到平滑作用，如果噪声值与周边像素和的差值过大，均值滤波便不能起到很好的滤波作用。</p>
+<p>2、 基于1中的解释，中值滤波对椒盐噪声这种孤立噪声具有非常好的滤波效果，而均值滤波只能平滑图片灰度值，噪点虽然不突兀，但仍然肉眼可见。</p>
+<p>3、 同理，对于高斯噪声，中值滤波对于相对滤波器范围孤立的点（在5.2将进一步解释），能够被很好的滤除，而对于密集的噪点只能保留受干扰的灰度值，因此其结果就出现了小范围的突兀噪点，而均值滤波结果仍然只是做到了平滑图像。</p>
+<p>4、 由于高斯噪声的每个像素点都或多或少的收到了噪声的干扰，几乎不存在真值像素点，因此中值滤波和均值滤波都不能够彻底地滤除噪声。</p>
+<h4 id="512-letters">5.1.2 Letters</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">test(Letters, <span style="color:#ae81ff">3</span>, prob<span style="color:#f92672">=</span><span style="color:#ae81ff">0.005</span>, var<span style="color:#f92672">=</span><span style="color:#ae81ff">0.005</span>)
+</code></pre></div><p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_20_0.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_20_1.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_20_2.png" alt="png"></p>
+<p>与5.1中分析一致，中值滤波对椒盐噪声滤除彻底，其他情况都做不到彻底地滤除。同时，观察结果也能发现，中值滤波器会破坏原图像中存在的孤立像素点，可以看到图片右边的四个点阵，都被严重破坏，并且越稀疏的点阵，破坏越严重，最上面的点阵甚至已经见不到黑点。同时由于高斯噪声减弱了点阵的密度，可以看到高斯噪声的破坏效果比椒盐噪声的更为严重。</p>
+<h4 id="513-lotus">5.1.3 lotus</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">test(lotus, <span style="color:#ae81ff">9</span>, prob<span style="color:#f92672">=</span><span style="color:#ae81ff">0.005</span>, var<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0001</span>)
+</code></pre></div><p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_23_0.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_23_1.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_23_2.png" alt="png"></p>
+<p>与5.1中一致，中值滤波对高斯噪声的结果图中虽然噪点明显，但范围很小，而均值滤波只起到了平滑的效果，并且中值滤波器能够完全滤除椒盐噪声。</p>
+<h3 id="52-滤波器尺寸">5.2 滤波器尺寸</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">test(pattern, <span style="color:#ae81ff">3</span>, prob<span style="color:#f92672">=</span><span style="color:#ae81ff">0.005</span>, var<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0001</span>)
+</code></pre></div><p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_26_0.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_26_1.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_26_2.png" alt="png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">test(pattern, <span style="color:#ae81ff">5</span>, prob<span style="color:#f92672">=</span><span style="color:#ae81ff">0.005</span>, var<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0001</span>)
+</code></pre></div><p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_27_0.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_27_1.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_27_2.png" alt="png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">test(pattern, <span style="color:#ae81ff">7</span>, prob<span style="color:#f92672">=</span><span style="color:#ae81ff">0.005</span>, var<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0001</span>)
+</code></pre></div><p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_28_0.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_28_1.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_28_2.png" alt="png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">test(pattern, <span style="color:#ae81ff">9</span>, prob<span style="color:#f92672">=</span><span style="color:#ae81ff">0.005</span>, var<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0001</span>)
+</code></pre></div><p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_29_0.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_29_1.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_29_2.png" alt="png"></p>
+<h3 id="53-连续滤波">5.3 连续滤波</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">test(pattern, <span style="color:#ae81ff">5</span>, prob<span style="color:#f92672">=</span><span style="color:#ae81ff">0.005</span>, var<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0001</span>, times<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>)
+</code></pre></div><pre><code>图片尺寸：
+(252, 252)
+(248, 248)
+(244, 244)
+(240, 240)
+(236, 236)
+(232, 232)
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_31_1.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_31_2.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_31_3.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_31_4.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_31_5.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_31_6.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_31_7.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_31_8.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_31_9.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_31_10.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_31_11.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_31_12.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_31_13.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/Filters_files/Filters_31_14.png" alt="png"></p>
+<p>可以看到，不断地进行滤波，在不做padding的情况下，图片的尺寸越来越小；同时由于越往后运算得出的图片感受野越大，其效果相当于扩大卷积核的大小，与5.2中的结果对比也能证明此结论。可以看到多次均值滤波的效果相当于尺寸大的卷积核，计算出的图片随着次数增加越来越模糊，在第六次时其边缘几乎要消失；同理，多次中值滤波的效果与尺寸大的中值滤波器近似，计算出的图片随着次数的增加圆角越来越明显，在高斯噪声中边缘还被侵蚀。</p>
+<p>实验代码见：
+<em><a href="https://github.com/Yangliangzhe/Image-Processing">https://github.com/Yangliangzhe/Image-Processing</a></em></p>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://Yangliangzhe.github.io/cause/adthreshold/" data-tooltip="基于阈值的图像分割" aria-label="下一篇: 基于阈值的图像分割">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://Yangliangzhe.github.io/cause/histeq/" data-tooltip="直方图均衡化" aria-label="上一篇: 直方图均衡化">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="分享这个帖子">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://Yangliangzhe.github.io/cause/filters/" title="分享到 Facebook" aria-label="分享到 Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://Yangliangzhe.github.io/cause/filters/" title="分享到 Twitter" aria-label="分享到 Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://Yangliangzhe.github.io/cause/filters/" title="分享到 Linkedin" aria-label="分享到 Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="发表评论">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="回到顶部">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/Yangliangzhe.github.io\/cause\/filters\/';
+        
+          this.page.identifier = '\/cause\/filters\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'tranquilpeak';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2022 LiangZhe Yang. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="1">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://Yangliangzhe.github.io/cause/adthreshold/" data-tooltip="基于阈值的图像分割" aria-label="下一篇: 基于阈值的图像分割">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://Yangliangzhe.github.io/cause/histeq/" data-tooltip="直方图均衡化" aria-label="上一篇: 直方图均衡化">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="分享这个帖子">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://Yangliangzhe.github.io/cause/filters/" title="分享到 Facebook" aria-label="分享到 Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://Yangliangzhe.github.io/cause/filters/" title="分享到 Twitter" aria-label="分享到 Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://Yangliangzhe.github.io/cause/filters/" title="分享到 Linkedin" aria-label="分享到 Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="发表评论">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="回到顶部">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="1">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FYangliangzhe.github.io%2Fcause%2Ffilters%2F" aria-label="分享到 Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2FYangliangzhe.github.io%2Fcause%2Ffilters%2F" aria-label="分享到 Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2FYangliangzhe.github.io%2Fcause%2Ffilters%2F" aria-label="分享到 Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>分享到 Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://Yangliangzhe.github.io/images/profile.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">LiangZhe Yang</h4>
+    
+      <div id="about-card-bio">I am interested in Computer Vision and have a broad study on it</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-phone-alt"></i>
+        <br/>
+        18507950158
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-envelope"></i>
+        <br/>
+        1369438244@qq.com
+      </div>
+    
+    
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://Yangliangzhe.github.io/images/background.png');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://Yangliangzhe.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

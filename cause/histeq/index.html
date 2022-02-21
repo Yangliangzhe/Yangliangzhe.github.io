@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/Yangliangzhe.github.io",
+  "author": {
+    "@type": "Person",
+    "name": "LiangZhe Yang",
+    
+    "image": "https://Yangliangzhe.github.io/images/profile.jpg"
+    
+  },
+  "name":"YangLiangZhe\u0027s blog",
+  "description":"\u003cp\u003e针对给定的输入图像f（假设输入图像为灰度图像），根据直方图均化的表达式，利用Matlab和\/或C\u002b\u002b等编程语言完成图像直方图均化的编程实现，同时分别显示输入图像、输入图像的直方图、均化后的图像以及均化后图像的直方图，观察和分析图像显示结果。\u003c\/p\u003e",
+  "url":"https:\/\/Yangliangzhe.github.io\/cause\/histeq\/",
+  "keywords":"[]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.92.0 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="LiangZhe Yang">
+<meta name="keywords" content="">
+<meta name="description" content="针对给定的输入图像f（假设输入图像为灰度图像），根据直方图均化的表达式，利用Matlab和/或C&#43;&#43;等编程语言完成图像直方图均化的编程实现，同时分别显示输入图像、输入图像的直方图、均化后的图像以及均化后图像的直方图，观察和分析图像显示结果。">
+
+
+<meta property="og:description" content="针对给定的输入图像f（假设输入图像为灰度图像），根据直方图均化的表达式，利用Matlab和/或C&#43;&#43;等编程语言完成图像直方图均化的编程实现，同时分别显示输入图像、输入图像的直方图、均化后的图像以及均化后图像的直方图，观察和分析图像显示结果。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="直方图均衡化">
+<meta name="twitter:title" content="直方图均衡化">
+<meta property="og:url" content="https://Yangliangzhe.github.io/cause/histeq/">
+<meta property="twitter:url" content="https://Yangliangzhe.github.io/cause/histeq/">
+<meta property="og:site_name" content="YangLiangZhe&#39;s blog">
+<meta property="og:description" content="针对给定的输入图像f（假设输入图像为灰度图像），根据直方图均化的表达式，利用Matlab和/或C&#43;&#43;等编程语言完成图像直方图均化的编程实现，同时分别显示输入图像、输入图像的直方图、均化后的图像以及均化后图像的直方图，观察和分析图像显示结果。">
+<meta name="twitter:description" content="针对给定的输入图像f（假设输入图像为灰度图像），根据直方图均化的表达式，利用Matlab和/或C&#43;&#43;等编程语言完成图像直方图均化的编程实现，同时分别显示输入图像、输入图像的直方图、均化后的图像以及均化后图像的直方图，观察和分析图像显示结果。">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2021-12-04T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2021-12-04T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="实验">
+    
+      <meta property="article:section" content="图像处理">
+    
+  
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://Yangliangzhe.github.io/images/profile.jpg">
+  <meta property="twitter:image" content="https://Yangliangzhe.github.io/images/profile.jpg">
+
+
+
+
+  <meta property="og:image" content="https://Yangliangzhe.github.io/images/dft2d.jpg">
+  <meta property="twitter:image" content="https://Yangliangzhe.github.io/images/dft2d.jpg">
+
+
+  <meta property="og:image" content="https://Yangliangzhe.github.io/images/dft2d2.jpg">
+  <meta property="twitter:image" content="https://Yangliangzhe.github.io/images/dft2d2.jpg">
+
+
+    <title>直方图均衡化</title>
+
+    <link rel="icon" href="https://Yangliangzhe.github.io/images/logo.png">
+    
+
+    
+
+    <link rel="canonical" href="https://Yangliangzhe.github.io/cause/histeq/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://Yangliangzhe.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+    
+    
+
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="1">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://Yangliangzhe.github.io/" aria-label="去首页">YangLiangZhe&#39;s blog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://Yangliangzhe.github.io/#about" aria-label="打开链接: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://Yangliangzhe.github.io/images/profile.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="1">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://Yangliangzhe.github.io/#about" aria-label="阅读有关作者的更多信息">
+          <img class="sidebar-profile-picture" src="https://Yangliangzhe.github.io/images/profile.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">LiangZhe Yang</h4>
+        
+          <h5 class="sidebar-profile-bio">I am interested in Computer Vision and have a broad study on it</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/home" title="主页">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">主页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/cause" title="课程">
+    
+      <i class="sidebar-button-icon fas fa-atlas" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">课程</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/project" title="项目">
+    
+      <i class="sidebar-button-icon far fa-calendar-alt" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">项目</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/paper" title="论文">
+    
+      <i class="sidebar-button-icon fas fa-sticky-note" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">论文</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/tags" title="标签">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/categories" title="类别">
+    
+      <i class="sidebar-button-icon fas fa-code-branch" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">类别</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.zhihu.com/people/fang-xue-che" target="_blank" rel="noopener" title="博客">
+    
+      <i class="sidebar-button-icon far fa-blog" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">博客</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Yangliangzhe" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/#about" title="名片">
+    
+      <i class="sidebar-button-icon fas fa-address-card" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">名片</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('/images/dft2d.jpg')"
+       data-behavior="1">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      直方图均衡化
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2021-12-04T00:00:00Z">
+        
+  十二月 4, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://Yangliangzhe.github.io/categories/%e5%ae%9e%e9%aa%8c">实验</a>, 
+    
+      <a class="category-link" href="https://Yangliangzhe.github.io/categories/%e5%9b%be%e5%83%8f%e5%a4%84%e7%90%86">图像处理</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="1"
+        class="hasCover
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>针对给定的输入图像f（假设输入图像为灰度图像），根据直方图均化的表达式，利用Matlab和/或C++等编程语言完成图像直方图均化的编程实现，同时分别显示输入图像、输入图像的直方图、均化后的图像以及均化后图像的直方图，观察和分析图像显示结果。</p>
+<h1 id="实验2-直方图均衡化">实验2 直方图均衡化</h1>
+<h2 id="一导入图片">一、导入图片</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">import</span> cv2
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;./Images//Lab2//&#39;</span>
+
+AG     <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>imread(path<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;AG.jpg&#39;</span>)
+couple <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>imread(path<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;couple.bmp&#39;</span>)
+scene1 <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>imread(path<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;scene1.jpg&#39;</span>)
+yewan  <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>imread(path<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;yewan.jpg&#39;</span>)
+
+plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">12.0</span>, <span style="color:#ae81ff">7.0</span>) 
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">1</span>)
+plt<span style="color:#f92672">.</span>imshow(AG, <span style="color:#e6db74">&#39;gray&#39;</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;AG&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">2</span>)
+plt<span style="color:#f92672">.</span>imshow(couple)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;couple&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">3</span>)
+plt<span style="color:#f92672">.</span>imshow(scene1)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;scene1&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">4</span>)
+plt<span style="color:#f92672">.</span>imshow(yewan)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;yewan&#39;</span>)
+</code></pre></div><p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_4_1.png" alt="png"></p>
+<h2 id="二方法类编写">二、方法类编写</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 定义直方图类</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Histogram</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, image):
+        self<span style="color:#f92672">.</span>image  <span style="color:#f92672">=</span> image
+        self<span style="color:#f92672">.</span>isGray <span style="color:#f92672">=</span> len(image<span style="color:#f92672">.</span>shape)<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>
+        self<span style="color:#f92672">.</span>height <span style="color:#f92672">=</span> image<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]
+        self<span style="color:#f92672">.</span>width  <span style="color:#f92672">=</span> image<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]
+        self<span style="color:#f92672">.</span>channels_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>isGray <span style="color:#66d9ef">else</span> image<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">2</span>]
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__myhist</span>(self, image):
+        <span style="color:#75715e"># 计算图像直方图，image为对象图像或对象均衡化后图像</span>
+        <span style="color:#66d9ef">if</span>(len(image<span style="color:#f92672">.</span>shape)<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>):
+            hist <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">256</span>])
+            max_num <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>max(image)
+            min_num <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>min(image)
+            <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(min_num, max_num<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>):
+                hist[<span style="color:#ae81ff">0</span>, i] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sum(image<span style="color:#f92672">==</span>i)
+            <span style="color:#66d9ef">assert</span> np<span style="color:#f92672">.</span>sum(hist)<span style="color:#f92672">==</span>self<span style="color:#f92672">.</span>height<span style="color:#f92672">*</span>self<span style="color:#f92672">.</span>width
+            <span style="color:#66d9ef">return</span> hist
+        <span style="color:#66d9ef">else</span>:
+            hist <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros([self<span style="color:#f92672">.</span>channels_num, <span style="color:#ae81ff">256</span>])
+            <span style="color:#66d9ef">for</span> ch <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>channels_num): 
+                hist[ch,:] <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__myhist(image[:,:,ch])
+        <span style="color:#66d9ef">return</span> hist
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">plotHist</span>(self, title, HisEq<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>):
+        <span style="color:#75715e"># 绘制直方图，HisEq为1可视化均衡化后图像的直方图</span>
+        <span style="color:#66d9ef">if</span>(HisEq<span style="color:#f92672">==</span><span style="color:#ae81ff">1</span>):
+            hist <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__myhist(self<span style="color:#f92672">.</span>img_eq)
+        <span style="color:#66d9ef">elif</span>(HisEq<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>):
+            hist <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__myhist(self<span style="color:#f92672">.</span>img_from_hsv)
+        <span style="color:#66d9ef">elif</span>(HisEq<span style="color:#f92672">==</span><span style="color:#ae81ff">3</span>):
+            hist <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__myhist(self<span style="color:#f92672">.</span>img_hsv)
+        <span style="color:#66d9ef">else</span>:
+            hist <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__myhist(self<span style="color:#f92672">.</span>image)
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>channels_num):
+            <span style="color:#66d9ef">if</span>(self<span style="color:#f92672">.</span>channels_num<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">1</span>):
+                plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>, self<span style="color:#f92672">.</span>channels_num, i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)
+                plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#34;channel&#34;</span><span style="color:#f92672">+</span>str(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>))
+                plt<span style="color:#f92672">.</span>suptitle(title)
+            <span style="color:#66d9ef">else</span>:
+                plt<span style="color:#f92672">.</span>title(title)
+            plt<span style="color:#f92672">.</span>bar(range(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">256</span>), hist[i])
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__HisEq</span>(self, image):
+        <span style="color:#75715e"># 对输入image进行直方图均衡化，其中image为self.image的某个通道</span>
+        hist <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__myhist(image)
+        probs <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>cumsum(hist[<span style="color:#ae81ff">0</span>])<span style="color:#f92672">/</span>(self<span style="color:#f92672">.</span>width<span style="color:#f92672">*</span>self<span style="color:#f92672">.</span>height)
+        img_map <span style="color:#f92672">=</span> [int(<span style="color:#ae81ff">255</span> <span style="color:#f92672">*</span> probs[i]<span style="color:#f92672">+</span><span style="color:#ae81ff">0.5</span>) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">256</span>)]
+        img <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(image<span style="color:#f92672">.</span>shape, dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>uint8)
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>height):
+            <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>width):
+                img[i, j] <span style="color:#f92672">=</span> img_map[image[i, j]]
+        <span style="color:#66d9ef">return</span> img
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">HisEq</span>(self, visualization<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, HSV<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>):
+        <span style="color:#75715e"># 对self.image进行直方图均衡化,visualization=1时可视化均衡化后的图像</span>
+        <span style="color:#75715e"># HSV=0时各个通道单独均衡化、HSV=1时将彩色图像转到HSV域, 然后使用V进行直方图均衡化。</span>
+        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>isGray:
+            <span style="color:#66d9ef">if</span>(visualization):
+                plt<span style="color:#f92672">.</span>imshow(self<span style="color:#f92672">.</span>__HisEq(self<span style="color:#f92672">.</span>image), <span style="color:#e6db74">&#39;gray&#39;</span>)
+            self<span style="color:#f92672">.</span>img_eq <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__HisEq(self<span style="color:#f92672">.</span>image)
+            <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>__HisEq(self<span style="color:#f92672">.</span>image)
+        <span style="color:#66d9ef">elif</span>(HSV):
+            img_hsv <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>cvtColor(self<span style="color:#f92672">.</span>image, cv2<span style="color:#f92672">.</span>COLOR_RGB2HSV)
+            img_hsv[:,:,<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__HisEq(img_hsv[:,:,<span style="color:#ae81ff">2</span>])
+            img <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>cvtColor(img_hsv, cv2<span style="color:#f92672">.</span>COLOR_HSV2RGB)
+            self<span style="color:#f92672">.</span>img_from_hsv <span style="color:#f92672">=</span> img
+            self<span style="color:#f92672">.</span>img_hsv <span style="color:#f92672">=</span> img_hsv
+        <span style="color:#66d9ef">else</span>:
+            img <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(self<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>shape, dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>uint8)
+            <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>channels_num):
+                img[:,:,i] <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__HisEq(self<span style="color:#f92672">.</span>image[:,:,i])
+            self<span style="color:#f92672">.</span>img_eq <span style="color:#f92672">=</span> img
+
+        <span style="color:#66d9ef">if</span>(visualization):
+            plt<span style="color:#f92672">.</span>imshow(img)
+        <span style="color:#66d9ef">return</span> img
+
+</code></pre></div><h2 id="三直方图">三、直方图</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">AG_h <span style="color:#f92672">=</span> Histogram(AG)
+couple_h <span style="color:#f92672">=</span> Histogram(couple)
+scene1_h <span style="color:#f92672">=</span> Histogram(scene1)
+yewan_h <span style="color:#f92672">=</span> Histogram(yewan)
+
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">4</span>))
+AG_h<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;AG&#39;</span>)
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">4</span>))
+couple_h<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;couple&#39;</span>)
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">4</span>))
+scene1_h<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;scene1&#39;</span>)
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">4</span>))
+yewan_h<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;yewan&#39;</span>)
+</code></pre></div><p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_8_0.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_8_1.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_8_2.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_8_3.png" alt="png"></p>
+<p>可以看到个图像各通道的灰度值分布不均匀，且集中在很小的范围内，对比度不够，导致图像很多细节人眼辨别不出来。</p>
+<h2 id="四均衡化">四、均衡化</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">10</span>))
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>)
+plt<span style="color:#f92672">.</span>imshow(AG, <span style="color:#e6db74">&#39;gray&#39;</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;AG&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>)
+AG_h<span style="color:#f92672">.</span>HisEq()
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;HisEq-AG&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>)
+AG_h<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;AG histogram&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>)
+AG_h<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;HisEq-AG histogram&#39;</span>, <span style="color:#ae81ff">1</span>)
+</code></pre></div><p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_11_0.png" alt="png"></p>
+<p>从图像上来看，图像的对比度增强&mdash;原图黑色部分更黑，白色部分更白，前景目标更为突出。</p>
+<p>从直方图来看，原本灰度相对集中，均衡化后直方图的灰度被分散到更为广阔的灰度范围中去。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">14</span>,<span style="color:#ae81ff">14</span>))
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>)
+plt<span style="color:#f92672">.</span>imshow(couple)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;couple&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>)
+couple_h<span style="color:#f92672">.</span>HisEq()
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;channel independent equalization&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>)
+couple_h<span style="color:#f92672">.</span>HisEq(HSV<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;V channel equalization&#39;</span>)
+
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">4</span>))
+couple_h<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;image histogram&#39;</span>)
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">4</span>))
+couple_h<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;channel independent equalization&#39;</span>, <span style="color:#ae81ff">1</span>)
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">4</span>))
+couple_h<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;V channel equalization---RGB&#39;</span>, <span style="color:#ae81ff">2</span>)
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">4</span>))
+couple_h<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;V channel equalization---HSV&#39;</span>, <span style="color:#ae81ff">3</span>)
+</code></pre></div><p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_14_0.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_14_1.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_14_2.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_14_3.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_14_4.png" alt="png"></p>
+<p>可以看到单独对每一个通道进行灰度化后，每个通道的直方图都将灰度值分散开来，朝着均匀分布近似，对比度明显增强，并且原图像也不再是暗色调，各种隐藏在黑暗中的细节都能被肉眼清晰地看到。
+但是由于RGB通道做了不同的变换，导致变换后的图像色调信息(H)丢失。</p>
+<p>可以看到，通过调整HSV域中V通道（明度），这样既能保持原图像的色调和饱和度信息，又能够单独地对明度进行调整，使得图像的明暗对比度增强。</p>
+<p>通过结果可以看到变换后的图像同样能够看到隐藏的细节，同时色调没有发生丢失。同时其HSV域的V通道的直方图也朝均匀分布近似，而H、S、R、G、B并没有这个变化倾向。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">14</span>,<span style="color:#ae81ff">14</span>))
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>)
+plt<span style="color:#f92672">.</span>imshow(scene1)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;scene1&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>)
+scene1_h<span style="color:#f92672">.</span>HisEq()
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;channel independent equalization&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>)
+scene1_h<span style="color:#f92672">.</span>HisEq(HSV<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;V channel equalization&#39;</span>)
+
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">4</span>))
+scene1_h<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;image histogram&#39;</span>)
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">4</span>))
+scene1_h<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;channel independent equalization&#39;</span>, <span style="color:#ae81ff">1</span>)
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">4</span>))
+scene1_h<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;V channel equalization---RGB&#39;</span>, <span style="color:#ae81ff">2</span>)
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">4</span>))
+scene1_h<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;V channel equalization---HSV&#39;</span>, <span style="color:#ae81ff">3</span>)
+</code></pre></div><p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_18_0.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_18_1.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_18_2.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_18_3.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_18_4.png" alt="png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">14</span>,<span style="color:#ae81ff">14</span>))
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>)
+plt<span style="color:#f92672">.</span>imshow(yewan)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;yewan&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>)
+yewan_h<span style="color:#f92672">.</span>HisEq()
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;channel independent equalization&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>)
+yewan_h<span style="color:#f92672">.</span>HisEq(HSV<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;V channel equalization&#39;</span>)
+
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">4</span>))
+yewan_h<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;image histogram&#39;</span>)
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">4</span>))
+yewan_h<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;channel independent equalization&#39;</span>, <span style="color:#ae81ff">1</span>)
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">4</span>))
+yewan_h<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;V channel equalization---RGB&#39;</span>, <span style="color:#ae81ff">2</span>)
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">4</span>))
+yewan_h<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;V channel equalization---HSV&#39;</span>, <span style="color:#ae81ff">3</span>)
+
+</code></pre></div><p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_19_0.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_19_1.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_19_2.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_19_3.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/HistEq_files/HistEq_19_4.png" alt="png"></p>
+<p>可以看到，所有图片在直方图均衡化后，直方图的分布范围变广，图片的对比度增强，许多隐藏在图片中的细节都呈现在肉眼前。</p>
+<p>实验代码见：
+<em><a href="https://github.com/Yangliangzhe/Image-Processing">https://github.com/Yangliangzhe/Image-Processing</a></em></p>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://Yangliangzhe.github.io/cause/filters/" data-tooltip="图像平滑滤波" aria-label="下一篇: 图像平滑滤波">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://Yangliangzhe.github.io/cause/fourier/" data-tooltip="二维傅里叶变换" aria-label="上一篇: 二维傅里叶变换">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="分享这个帖子">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://Yangliangzhe.github.io/cause/histeq/" title="分享到 Facebook" aria-label="分享到 Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://Yangliangzhe.github.io/cause/histeq/" title="分享到 Twitter" aria-label="分享到 Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://Yangliangzhe.github.io/cause/histeq/" title="分享到 Linkedin" aria-label="分享到 Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="发表评论">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="回到顶部">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/Yangliangzhe.github.io\/cause\/histeq\/';
+        
+          this.page.identifier = '\/cause\/histeq\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'tranquilpeak';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2022 LiangZhe Yang. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="1">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://Yangliangzhe.github.io/cause/filters/" data-tooltip="图像平滑滤波" aria-label="下一篇: 图像平滑滤波">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://Yangliangzhe.github.io/cause/fourier/" data-tooltip="二维傅里叶变换" aria-label="上一篇: 二维傅里叶变换">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="分享这个帖子">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://Yangliangzhe.github.io/cause/histeq/" title="分享到 Facebook" aria-label="分享到 Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://Yangliangzhe.github.io/cause/histeq/" title="分享到 Twitter" aria-label="分享到 Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://Yangliangzhe.github.io/cause/histeq/" title="分享到 Linkedin" aria-label="分享到 Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="发表评论">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="回到顶部">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="1">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FYangliangzhe.github.io%2Fcause%2Fhisteq%2F" aria-label="分享到 Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2FYangliangzhe.github.io%2Fcause%2Fhisteq%2F" aria-label="分享到 Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2FYangliangzhe.github.io%2Fcause%2Fhisteq%2F" aria-label="分享到 Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>分享到 Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://Yangliangzhe.github.io/images/profile.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">LiangZhe Yang</h4>
+    
+      <div id="about-card-bio">I am interested in Computer Vision and have a broad study on it</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-phone-alt"></i>
+        <br/>
+        18507950158
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-envelope"></i>
+        <br/>
+        1369438244@qq.com
+      </div>
+    
+    
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://Yangliangzhe.github.io/images/background.png');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://Yangliangzhe.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

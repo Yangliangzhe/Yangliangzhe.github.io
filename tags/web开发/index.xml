@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web开发 on YangLiangZhe&#39;s blog</title>
+    <link>https://Yangliangzhe.github.io/tags/web%E5%BC%80%E5%8F%91/</link>
+    <description>Recent content in web开发 on YangLiangZhe&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 26 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://Yangliangzhe.github.io/tags/web%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>综合图像处理系统</title>
+      <link>https://Yangliangzhe.github.io/home/%E7%BB%BC%E5%90%88%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/home/%E7%BB%BC%E5%90%88%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F/</guid>
+      <description>&lt;p&gt;这是一个基于plotly与flask搭建的综合图像处理系统。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

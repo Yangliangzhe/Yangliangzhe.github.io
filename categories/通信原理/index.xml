@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>通信原理 on YangLiangZhe&#39;s blog</title>
+    <link>https://Yangliangzhe.github.io/categories/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/</link>
+    <description>Recent content in 通信原理 on YangLiangZhe&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 10 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://Yangliangzhe.github.io/categories/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>BPSK与最佳接收仿真</title>
+      <link>https://Yangliangzhe.github.io/cause/bpsk%E4%BF%A1%E5%8F%B7%E8%B0%83%E5%88%B6%E5%92%8C%E6%9C%80%E4%BD%B3%E6%8E%A5%E6%94%B6%E7%9A%84%E4%BB%BF%E7%9C%9F/</link>
+      <pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/cause/bpsk%E4%BF%A1%E5%8F%B7%E8%B0%83%E5%88%B6%E5%92%8C%E6%9C%80%E4%BD%B3%E6%8E%A5%E6%94%B6%E7%9A%84%E4%BB%BF%E7%9C%9F/</guid>
+      <description>&lt;p&gt;利用平方根升余弦滚降成形实现BPSK信号的调制和最佳接收，并对比仿真性能和理论性能。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>BPSK与最佳接收仿真</title>
+      <link>https://Yangliangzhe.github.io/home/bpsk%E4%BF%A1%E5%8F%B7%E8%B0%83%E5%88%B6%E5%92%8C%E6%9C%80%E4%BD%B3%E6%8E%A5%E6%94%B6%E7%9A%84%E4%BB%BF%E7%9C%9F/</link>
+      <pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/home/bpsk%E4%BF%A1%E5%8F%B7%E8%B0%83%E5%88%B6%E5%92%8C%E6%9C%80%E4%BD%B3%E6%8E%A5%E6%94%B6%E7%9A%84%E4%BB%BF%E7%9C%9F/</guid>
+      <description>&lt;p&gt;利用平方根升余弦滚降成形实现BPSK信号的调制和最佳接收，并对比仿真性能和理论性能。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>图像处理 on YangLiangZhe&#39;s blog</title>
+    <link>https://Yangliangzhe.github.io/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</link>
+    <description>Recent content in 图像处理 on YangLiangZhe&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 12 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://Yangliangzhe.github.io/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>基于阈值的图像分割</title>
+      <link>https://Yangliangzhe.github.io/cause/adthreshold/</link>
+      <pubDate>Sun, 12 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/cause/adthreshold/</guid>
+      <description>&lt;p&gt;基于python实现基本阈值图像分割、最优阈值图像分割(Ostu)、多阈值图像分割，同时对灰度图像和彩色图像都能够有效处理。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>基于阈值的图像分割</title>
+      <link>https://Yangliangzhe.github.io/home/adthreshold/</link>
+      <pubDate>Sun, 12 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/home/adthreshold/</guid>
+      <description>&lt;p&gt;基于python实现基本阈值图像分割、最优阈值图像分割(Ostu)、多阈值图像分割，同时对灰度图像和彩色图像都能够有效处理。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>图像平滑滤波</title>
+      <link>https://Yangliangzhe.github.io/cause/filters/</link>
+      <pubDate>Tue, 07 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/cause/filters/</guid>
+      <description>&lt;p&gt;针对给定的输入图像，根据均值或者中值滤波的原理，利用Matlab和/或C++等编程语言完成图像均值或者中值滤波的编程实现，同时分别显示输入图像、含噪声图像和均值或者中值滤波后的图像，观察和分析图像均值或者中值滤波结果。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>图像平滑滤波</title>
+      <link>https://Yangliangzhe.github.io/home/filters/</link>
+      <pubDate>Tue, 07 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/home/filters/</guid>
+      <description>&lt;p&gt;针对给定的输入图像，根据均值或者中值滤波的原理，利用Matlab和/或C++等编程语言完成图像均值或者中值滤波的编程实现，同时分别显示输入图像、含噪声图像和均值或者中值滤波后的图像，观察和分析图像均值或者中值滤波结果。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>直方图均衡化</title>
+      <link>https://Yangliangzhe.github.io/cause/histeq/</link>
+      <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/cause/histeq/</guid>
+      <description>&lt;p&gt;针对给定的输入图像f（假设输入图像为灰度图像），根据直方图均化的表达式，利用Matlab和/或C++等编程语言完成图像直方图均化的编程实现，同时分别显示输入图像、输入图像的直方图、均化后的图像以及均化后图像的直方图，观察和分析图像显示结果。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>直方图均衡化</title>
+      <link>https://Yangliangzhe.github.io/home/histeq/</link>
+      <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/home/histeq/</guid>
+      <description>&lt;p&gt;针对给定的输入图像f（假设输入图像为灰度图像），根据直方图均化的表达式，利用Matlab和/或C++等编程语言完成图像直方图均化的编程实现，同时分别显示输入图像、输入图像的直方图、均化后的图像以及均化后图像的直方图，观察和分析图像显示结果。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>二维傅里叶变换</title>
+      <link>https://Yangliangzhe.github.io/cause/fourier/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/cause/fourier/</guid>
+      <description>&lt;p&gt;实现图像的二维傅里叶变换并分析其幅度谱和相位谱的性质。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>二维傅里叶变换</title>
+      <link>https://Yangliangzhe.github.io/home/fourier/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/home/fourier/</guid>
+      <description>&lt;p&gt;实现图像的二维傅里叶变换并分析其幅度谱和相位谱的性质。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

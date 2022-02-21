@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>图像识别 on YangLiangZhe&#39;s blog</title>
+    <link>https://Yangliangzhe.github.io/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/</link>
+    <description>Recent content in 图像识别 on YangLiangZhe&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 30 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://Yangliangzhe.github.io/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>遥感影像识别</title>
+      <link>https://Yangliangzhe.github.io/home/%E9%81%A5%E6%84%9F%E5%BD%B1%E5%83%8F%E8%AF%86%E5%88%AB/</link>
+      <pubDate>Thu, 30 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/home/%E9%81%A5%E6%84%9F%E5%BD%B1%E5%83%8F%E8%AF%86%E5%88%AB/</guid>
+      <description>&lt;p&gt;分析SAR图像中军用车辆目标的影像特征，设计目标识别的流程和算法。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

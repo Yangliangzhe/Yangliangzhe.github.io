@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>计算智能 on YangLiangZhe&#39;s blog</title>
+    <link>https://Yangliangzhe.github.io/tags/%E8%AE%A1%E7%AE%97%E6%99%BA%E8%83%BD/</link>
+    <description>Recent content in 计算智能 on YangLiangZhe&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 23 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://Yangliangzhe.github.io/tags/%E8%AE%A1%E7%AE%97%E6%99%BA%E8%83%BD/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>遗传算法</title>
+      <link>https://Yangliangzhe.github.io/home/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yangliangzhe.github.io/home/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/</guid>
+      <description>&lt;p&gt;利用遗传算法解决01背包问题。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

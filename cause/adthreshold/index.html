@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/Yangliangzhe.github.io",
+  "author": {
+    "@type": "Person",
+    "name": "LiangZhe Yang",
+    
+    "image": "https://Yangliangzhe.github.io/images/profile.jpg"
+    
+  },
+  "name":"YangLiangZhe\u0027s blog",
+  "description":"\u003cp\u003e基于python实现基本阈值图像分割、最优阈值图像分割(Ostu)、多阈值图像分割，同时对灰度图像和彩色图像都能够有效处理。\u003c\/p\u003e",
+  "url":"https:\/\/Yangliangzhe.github.io\/cause\/adthreshold\/",
+  "keywords":"[]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.92.0 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="LiangZhe Yang">
+<meta name="keywords" content="">
+<meta name="description" content="基于python实现基本阈值图像分割、最优阈值图像分割(Ostu)、多阈值图像分割，同时对灰度图像和彩色图像都能够有效处理。">
+
+
+<meta property="og:description" content="基于python实现基本阈值图像分割、最优阈值图像分割(Ostu)、多阈值图像分割，同时对灰度图像和彩色图像都能够有效处理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于阈值的图像分割">
+<meta name="twitter:title" content="基于阈值的图像分割">
+<meta property="og:url" content="https://Yangliangzhe.github.io/cause/adthreshold/">
+<meta property="twitter:url" content="https://Yangliangzhe.github.io/cause/adthreshold/">
+<meta property="og:site_name" content="YangLiangZhe&#39;s blog">
+<meta property="og:description" content="基于python实现基本阈值图像分割、最优阈值图像分割(Ostu)、多阈值图像分割，同时对灰度图像和彩色图像都能够有效处理。">
+<meta name="twitter:description" content="基于python实现基本阈值图像分割、最优阈值图像分割(Ostu)、多阈值图像分割，同时对灰度图像和彩色图像都能够有效处理。">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2021-12-12T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2021-12-12T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="实验">
+    
+      <meta property="article:section" content="图像处理">
+    
+  
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://Yangliangzhe.github.io/images/profile.jpg">
+  <meta property="twitter:image" content="https://Yangliangzhe.github.io/images/profile.jpg">
+
+
+
+
+  <meta property="og:image" content="https://Yangliangzhe.github.io/images/Adth.jpg">
+  <meta property="twitter:image" content="https://Yangliangzhe.github.io/images/Adth.jpg">
+
+
+  <meta property="og:image" content="https://Yangliangzhe.github.io/images/Adth2.jpg">
+  <meta property="twitter:image" content="https://Yangliangzhe.github.io/images/Adth2.jpg">
+
+
+    <title>基于阈值的图像分割</title>
+
+    <link rel="icon" href="https://Yangliangzhe.github.io/images/logo.png">
+    
+
+    
+
+    <link rel="canonical" href="https://Yangliangzhe.github.io/cause/adthreshold/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://Yangliangzhe.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+    
+    
+
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="1">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://Yangliangzhe.github.io/" aria-label="去首页">YangLiangZhe&#39;s blog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://Yangliangzhe.github.io/#about" aria-label="打开链接: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://Yangliangzhe.github.io/images/profile.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="1">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://Yangliangzhe.github.io/#about" aria-label="阅读有关作者的更多信息">
+          <img class="sidebar-profile-picture" src="https://Yangliangzhe.github.io/images/profile.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">LiangZhe Yang</h4>
+        
+          <h5 class="sidebar-profile-bio">I am interested in Computer Vision and have a broad study on it</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/home" title="主页">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">主页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/cause" title="课程">
+    
+      <i class="sidebar-button-icon fas fa-atlas" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">课程</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/project" title="项目">
+    
+      <i class="sidebar-button-icon far fa-calendar-alt" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">项目</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/paper" title="论文">
+    
+      <i class="sidebar-button-icon fas fa-sticky-note" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">论文</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/tags" title="标签">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/categories" title="类别">
+    
+      <i class="sidebar-button-icon fas fa-code-branch" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">类别</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.zhihu.com/people/fang-xue-che" target="_blank" rel="noopener" title="博客">
+    
+      <i class="sidebar-button-icon far fa-blog" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">博客</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Yangliangzhe" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/#about" title="名片">
+    
+      <i class="sidebar-button-icon fas fa-address-card" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">名片</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('/images/Adth.jpg')"
+       data-behavior="1">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      基于阈值的图像分割
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2021-12-12T00:00:00Z">
+        
+  十二月 12, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://Yangliangzhe.github.io/categories/%e5%ae%9e%e9%aa%8c">实验</a>, 
+    
+      <a class="category-link" href="https://Yangliangzhe.github.io/categories/%e5%9b%be%e5%83%8f%e5%a4%84%e7%90%86">图像处理</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="1"
+        class="hasCover
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>基于python实现基本阈值图像分割、最优阈值图像分割(Ostu)、多阈值图像分割，同时对灰度图像和彩色图像都能够有效处理。</p>
+<h1 id="实验4-基于自动阈值选择的图像分割">实验4 基于自动阈值选择的图像分割</h1>
+<h2 id="一导入图片及方法库">一、导入图片及方法库</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">import</span> cv2
+<span style="color:#f92672">from</span> GeneticAlgorithm <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;.\Images\Lab4</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#39;</span>
+
+bilotus <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>imread(path<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;bilotus1.jpg&#39;</span>)
+cameraman <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>imread(path<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;cameraman.jpg&#39;</span>)
+card <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>imread(path<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;card4.jpg&#39;</span>)
+pepper <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>imread(path<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;Peppers.jpg&#39;</span>)
+color <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>imread(path<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;color.png&#39;</span>)
+plane <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>imread(path<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;plane1.jpg&#39;</span>)
+
+plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">18.0</span>, <span style="color:#ae81ff">10.0</span>) 
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>)
+plt<span style="color:#f92672">.</span>imshow(bilotus, <span style="color:#e6db74">&#39;gray&#39;</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;bilotus&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>)
+plt<span style="color:#f92672">.</span>imshow(cameraman, <span style="color:#e6db74">&#39;gray&#39;</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;cameraman&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>)
+plt<span style="color:#f92672">.</span>imshow(plane, <span style="color:#e6db74">&#39;gray&#39;</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;plane&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>)
+plt<span style="color:#f92672">.</span>imshow(pepper, <span style="color:#e6db74">&#39;gray&#39;</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;pepper&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>)
+plt<span style="color:#f92672">.</span>imshow(card, <span style="color:#e6db74">&#39;gray&#39;</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;card&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">6</span>)
+plt<span style="color:#f92672">.</span>imshow(color, <span style="color:#e6db74">&#39;gray&#39;</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;color&#39;</span>)
+</code></pre></div><pre><code>Text(0.5, 1.0, 'color')
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_3_1.png" alt="png"></p>
+<h2 id="二高斯噪声函数定义">二、高斯噪声函数定义</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gasuss_noise</span>(image, mean<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, var<span style="color:#f92672">=</span><span style="color:#ae81ff">0.002</span>, vis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">        添加高斯噪声
+</span><span style="color:#e6db74">        mean : 均值
+</span><span style="color:#e6db74">        var : 方差
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    image <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(image<span style="color:#f92672">/</span><span style="color:#ae81ff">255</span>, dtype<span style="color:#f92672">=</span>float)
+    noise <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(mean, var <span style="color:#f92672">**</span> <span style="color:#ae81ff">0.5</span>, image<span style="color:#f92672">.</span>shape)
+    out <span style="color:#f92672">=</span> image <span style="color:#f92672">+</span> noise
+    <span style="color:#66d9ef">if</span> out<span style="color:#f92672">.</span>min() <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>:
+        low_clip <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>
+    <span style="color:#66d9ef">else</span>:
+        low_clip <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>
+    out <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>clip(out, low_clip, <span style="color:#ae81ff">1.0</span>)
+    out <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>uint8(out<span style="color:#f92672">*</span><span style="color:#ae81ff">255</span>)
+    <span style="color:#66d9ef">if</span>(vis):
+        plt<span style="color:#f92672">.</span>imshow(<span style="color:#e6db74">&#34;gasuss&#34;</span>, out)
+
+    <span style="color:#66d9ef">return</span> out
+</code></pre></div><h2 id="三实验结果">三、实验结果</h2>
+<h3 id="1-单阈值分割">1. 单阈值分割</h3>
+<h4 id="11-无噪图片">1.1 无噪图片</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">10.0</span>, <span style="color:#ae81ff">7.0</span>) 
+bilotus_ad <span style="color:#f92672">=</span> AdThreshold(bilotus)
+thres0 <span style="color:#f92672">=</span> bilotus_ad<span style="color:#f92672">.</span>Basic()
+bilotus_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;bilotus&#39;</span>)
+bilotus_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;bilotu Basic&#39;</span>)
+thres0 <span style="color:#f92672">=</span> bilotus_ad<span style="color:#f92672">.</span>Ostu()
+bilotus_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;bilotus&#39;</span>)
+bilotus_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;bilotus Ostu&#39;</span>)
+</code></pre></div><pre><code>Basic 的阈值为127
+Ostu 的阈值为38
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_9_1.png" alt="png"></p>
+<pre><code>&lt;Figure size 720x504 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_9_3.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_9_4.png" alt="png"></p>
+<pre><code>&lt;Figure size 720x504 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_9_6.png" alt="png"></p>
+<p>(1) 前两张图片是<strong>基本全局阈值分割算法</strong>的结果，后两张是<strong>最优全局阈值分割</strong>的结果。</p>
+<p>(2) 第一张图的image表示原图像，mask表示两类中一类的掩膜(掩膜区域是蓝色)，另一类是其补集，class1和class2表示的是分割结果(选中区域保留原来的灰度值,其他置为0,因此class2出现花内外均为黑色的现象)。第二张图是该图像的直方图，红色虚线表示Basic得到的灰度阈值。</p>
+<p>(3) Basic全局阈值处理的整体思路：选取整幅图像的中间灰度值做全局阈值的初始值，之后通过被阈值切出的两类的平均灰度值更新全局阈值，反复迭代，直到全局阈值变化差小于预设值，完成分割。</p>
+<p>(4) Ostu的基本思路是遍历0到255所有灰度值，找出对应类间方差最大的灰度作为阈值。</p>
+<p>(5) 从分割mask和直方图可以看出，视觉上，这张图片被比较好地分割出前景和背景；从统计意义上，两个灰度峰值被单独完整地切开，分割出的两类不粘连，效果好。</p>
+<p>(6) 由于该图像中部的灰度值为0, 这导致中间的大部分灰度值的类间方差相等且最大，而Basic是取两类平均灰度的均值, Ostu则是取最邻近0的灰度(编写的算法决定), 因此出现了较大的阈值差异, 但分割结果没有差异。</p>
+<h4 id="12-有噪图片">1.2 有噪图片</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 无噪声</span>
+plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">7.0</span>, <span style="color:#ae81ff">7.0</span>) 
+cameraman_ad <span style="color:#f92672">=</span> AdThreshold(cameraman)
+cameraman_ad<span style="color:#f92672">.</span>Basic()
+cameraman_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;cameraman Basic&#39;</span>)
+cameraman_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;cameraman Basic&#39;</span>, <span style="color:#ae81ff">1</span>)
+
+cameraman_ad <span style="color:#f92672">=</span> AdThreshold(cameraman)
+cameraman_ad<span style="color:#f92672">.</span>Ostu()
+cameraman_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;cameraman Ostu&#39;</span>)
+cameraman_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;cameraman Ostu&#39;</span>)
+</code></pre></div><pre><code>Basic 的阈值为89
+Ostu 的阈值为89
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_17_1.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x504 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_17_3.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_17_4.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x504 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_17_6.png" alt="png"></p>
+<p>第二张图片的两条黑色虚线是Basic求迭代到的两类平均灰度，红色虚线是求得的阈值，可以看到两者的关系与原理一致，同时可以看到Ostu和Basic求到的阈值一样。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">7.0</span>, <span style="color:#ae81ff">7.0</span>) 
+<span style="color:#75715e"># 有噪声Basic</span>
+cameraman_noise <span style="color:#f92672">=</span> gasuss_noise(cameraman, var<span style="color:#f92672">=</span><span style="color:#ae81ff">0.005</span>)
+cameraman_noise_ad <span style="color:#f92672">=</span> AdThreshold(cameraman_noise)
+cameraman_noise_ad<span style="color:#f92672">.</span>Basic()
+cameraman_noise_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;cameraman Basic&#39;</span>)
+cameraman_noise_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;cameraman Basic&#39;</span>, <span style="color:#ae81ff">1</span>)
+<span style="color:#75715e"># 有噪声Ostu</span>
+cameraman_noise_ad<span style="color:#f92672">.</span>Ostu()
+cameraman_noise_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;cameraman Ostu&#39;</span>)
+cameraman_noise_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;cameraman Ostu&#39;</span>)
+</code></pre></div><pre><code>Basic 的阈值为101
+Ostu 的阈值为101
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_19_1.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x504 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_19_3.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_19_4.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x504 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_19_6.png" alt="png"></p>
+<p>观察阈值, 发现加入噪声后, 求得的阈值足足变化了12; 观察mask, 白色的人身上每有一块蓝斑，就代表错分割。因此，可以看出Basic和Ostu方法都会受到噪声的影响。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">7.0</span>, <span style="color:#ae81ff">7.0</span>) 
+<span style="color:#75715e"># 有噪声Basic</span>
+cameraman_noise1 <span style="color:#f92672">=</span> gasuss_noise(cameraman, var<span style="color:#f92672">=</span><span style="color:#ae81ff">0.05</span>)
+cameraman_noise1_ad <span style="color:#f92672">=</span> AdThreshold(cameraman_noise1)
+cameraman_noise1_ad<span style="color:#f92672">.</span>Basic()
+cameraman_noise1_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;cameraman Basic&#39;</span>)
+cameraman_noise1_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;cameraman Basic&#39;</span>, <span style="color:#ae81ff">1</span>)
+<span style="color:#75715e"># 有噪声Ostu</span>
+cameraman_noise1_ad<span style="color:#f92672">.</span>Ostu()
+cameraman_noise1_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;cameraman Ostu&#39;</span>)
+cameraman_noise1_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;cameraman Ostu&#39;</span>)
+</code></pre></div><pre><code>Basic 的阈值为136
+Ostu 的阈值为137
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_21_1.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x504 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_21_3.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_21_4.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x504 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_21_6.png" alt="png"></p>
+<p>观察上面的结果, 此时噪声的能量被进一步加大, 可以得出结论: 当噪声干扰模糊了直方图上两类的波谷, 使得简单阈值处理已经基本无法分割出目标。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">7.0</span>, <span style="color:#ae81ff">7.0</span>) 
+cameraman_afblur <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>medianBlur(cameraman_noise, <span style="color:#ae81ff">5</span>)
+<span style="color:#75715e"># 中值滤波后</span>
+cameraman_afblur_ad <span style="color:#f92672">=</span> AdThreshold(cameraman_afblur)
+cameraman_afblur_ad<span style="color:#f92672">.</span>Basic()
+cameraman_afblur_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;cameraman Basic&#39;</span>)
+cameraman_afblur_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;cameraman Basic&#39;</span>, <span style="color:#ae81ff">1</span>)
+<span style="color:#75715e"># 中值滤波后</span>
+cameraman_afblur_ad<span style="color:#f92672">.</span>Ostu()
+cameraman_afblur_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;cameraman Ostu&#39;</span>)
+cameraman_afblur_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;cameraman Ostu&#39;</span>)
+</code></pre></div><pre><code>Basic 的阈值为93
+Ostu 的阈值为94
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_23_1.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x504 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_23_3.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_23_4.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x504 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_23_6.png" alt="png"></p>
+<p>可以看到, 进过中值滤波器后，直方图的波谷再次出现, 分割阈值93也更接近无噪声的89, 视觉上分割mask也基本消除了凌乱的误分割斑。</p>
+<h4 id="13-彩色图像">1.3 彩色图像</h4>
+<p><strong>1.3.1 将彩色图像灰度化, 在灰度图像上进行Basic和Ostu得到阈值。</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">7.0</span>, <span style="color:#ae81ff">6.0</span>) 
+plane_ad <span style="color:#f92672">=</span> AdThreshold(plane, HSV<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+plane_ad<span style="color:#f92672">.</span>Basic()
+plane_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;plane Basic&#39;</span>)
+plane_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;plane Basic&#39;</span>, <span style="color:#ae81ff">1</span>)
+plane_ad<span style="color:#f92672">.</span>Ostu()
+plane_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;plane Ostu&#39;</span>)
+plane_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;plane Ostu&#39;</span>)
+</code></pre></div><pre><code>Basic 的阈值为113
+Ostu 的阈值为113
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_27_1.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x432 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_27_3.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_27_4.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x432 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_27_6.png" alt="png"></p>
+<p><strong>1.3.2 将彩色图像转换到HSV域, 用H通道做Basic和Ostu得到阈值。</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">7.0</span>, <span style="color:#ae81ff">6.0</span>) 
+plane_ad <span style="color:#f92672">=</span> AdThreshold(plane, HSV<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+plane_ad<span style="color:#f92672">.</span>Basic()
+plane_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;plane Basic&#39;</span>)
+plane_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;plane Basic&#39;</span>, <span style="color:#ae81ff">1</span>)
+plane_ad<span style="color:#f92672">.</span>Ostu()
+plane_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;plane Ostu&#39;</span>)
+plane_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;plane Ostu&#39;</span>)
+</code></pre></div><pre><code>Basic 的阈值为86
+Ostu 的阈值为109
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_29_1.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x432 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_29_3.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_29_4.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x432 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_29_6.png" alt="png"></p>
+<p><strong>1.3.3 将彩色图像转换到HSV域, 用I通道做Basic和Ostu得到阈值。</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">7.0</span>, <span style="color:#ae81ff">6.0</span>) 
+plane_ad <span style="color:#f92672">=</span> AdThreshold(plane, HSV<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+plane_ad<span style="color:#f92672">.</span>Basic()
+plane_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;plane Basic&#39;</span>)
+plane_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;plane Basic&#39;</span>, <span style="color:#ae81ff">1</span>)
+plane_ad<span style="color:#f92672">.</span>Ostu()
+plane_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;plane Ostu&#39;</span>)
+plane_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;plane Ostu&#39;</span>)
+</code></pre></div><pre><code>Basic 的阈值为154
+Ostu 的阈值为154
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_31_1.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x432 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_31_3.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_31_4.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x432 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_31_6.png" alt="png"></p>
+<p><strong>1.3.4 将彩色图像转换到HSV域, 用V通道做Basic和Ostu得到阈值。</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">7.0</span>, <span style="color:#ae81ff">6.0</span>) 
+plane_ad <span style="color:#f92672">=</span> AdThreshold(plane, HSV<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+plane_ad<span style="color:#f92672">.</span>Basic()
+plane_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;plane Basic&#39;</span>)
+plane_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;plane Basic&#39;</span>, <span style="color:#ae81ff">1</span>)
+plane_ad<span style="color:#f92672">.</span>Ostu()
+plane_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;plane Ostu&#39;</span>)
+plane_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;plane Ostu&#39;</span>)
+</code></pre></div><pre><code>Basic 的阈值为169
+Ostu 的阈值为169
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_33_1.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x432 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_33_3.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_33_4.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x432 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_33_6.png" alt="png"></p>
+<p><strong>1.3.5 借鉴matlab的实现方式, 将图片的三通道都拿去统计得到直方图, 在此基础上求Ostu的灰度均值、先验概率等, 其次mask由转成的灰度图像和阈值得来。</strong></p>
+<p>(由于编写Basic是直接使用的通道矩阵来求平均灰度而非直方图, 因此Basic不会受到该方法的影响, 因此在此不做对比)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">7.0</span>, <span style="color:#ae81ff">6.0</span>) 
+plane_ad <span style="color:#f92672">=</span> AdThreshold(plane, HSV<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>)
+plane_ad<span style="color:#f92672">.</span>Ostu()
+plane_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;plane Ostu&#39;</span>)
+plane_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;plane Ostu&#39;</span>)
+</code></pre></div><pre><code>Ostu 的阈值为168
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_36_1.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x432 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_36_3.png" alt="png"></p>
+<p><strong>1.3.6 结论</strong></p>
+<p>(1) 不管是使用HSV的S通道、V通道还是做灰度化, Basic和Ostu的求得的性能基本相当。而使用S通道做时两者差异较大, 这里猜想是由于初始化阈值时使用图像的中间灰度导致算法不收敛。(后面将进行验证)</p>
+<p>(2) 对比可以看到, 使用灰度化和V通道(亮度)的<strong>视觉</strong>分割效果最好, 两者的结果相当, 这是因为两者刻画的概念近似, 但由于直方图(但形状近似)不同, 因此求得的阈值不同。但是否所有彩色图像的<strong>视觉</strong>分割效果都是这两种方法最佳, 下文将进行进一步研究。</p>
+<p>(3) 可以看到matlab的Ostu方法, 虽然在直方图上能够达到最佳, 但是由于其是直接将三通道一同统计的直方图, 这样会进一步混乱图像的消息, 因此其得出的阈值并不能达到很好的分割结果。</p>
+<p><strong>1.3.7 拓展1 Basic收敛问题</strong></p>
+<p>将初始化阈值设置为最大阈值-10</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">7.0</span>, <span style="color:#ae81ff">6.0</span>) 
+plane_ad <span style="color:#f92672">=</span> AdThreshold(plane, HSV<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+plane_ad<span style="color:#f92672">.</span>Basic(test<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+plane_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;plane Basic&#39;</span>)
+plane_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;plane Basic&#39;</span>, <span style="color:#ae81ff">1</span>)
+plane_ad<span style="color:#f92672">.</span>Ostu()
+plane_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;plane Ostu&#39;</span>)
+plane_ad<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;plane Ostu&#39;</span>)
+</code></pre></div><pre><code>最小灰度为:  24.0
+中间灰度为:  84.0
+Basic 的阈值为109
+Ostu 的阈值为109
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_43_1.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x432 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_43_3.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_43_4.png" alt="png"></p>
+<pre><code>&lt;Figure size 504x432 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_43_6.png" alt="png"></p>
+<p>经过分析, 我猜想1.3.2中Basic算法收敛在89的原因是：阈值初始化使用的是图像的中间灰度, 而H通道的中间灰度处在84, 最小灰度在24; 从直方图可以看到中间灰度84已经基本处在了极小灰度与100以右的大灰度值的中间, 因此导致阈值无法收敛到100以右; 但是由于低灰度值的能量很少, 在直方图上甚至看不到, 因此其是可以忽略不记的, 更好的阈值应该处于100已右。</p>
+<p>从这里可以发现对于Basic来说, 面对比较分散的直方图时, 其阈值初始化对其收敛目标是很重要的。而Ostu不存在此缺点。</p>
+<p><strong>1.3.8 最优通道问题</strong></p>
+<ol>
+<li>HSV的H通道</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">7.0</span>, <span style="color:#ae81ff">7.0</span>) 
+pepper_ad <span style="color:#f92672">=</span> AdThreshold(pepper, HSV<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+pepper_ad<span style="color:#f92672">.</span>Ostu()
+pepper_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;pepper Ostu&#39;</span>)
+</code></pre></div><pre><code>Ostu 的阈值为99
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_48_1.png" alt="png"></p>
+<ol start="2">
+<li>HSV的S通道</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">7.0</span>, <span style="color:#ae81ff">7.0</span>) 
+pepper_ad <span style="color:#f92672">=</span> AdThreshold(pepper, HSV<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+pepper_ad<span style="color:#f92672">.</span>Ostu()
+pepper_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;pepper Ostu&#39;</span>)
+</code></pre></div><pre><code>Ostu 的阈值为169
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_50_1.png" alt="png"></p>
+<ol start="3">
+<li>HSV的V通道</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">7.0</span>, <span style="color:#ae81ff">7.0</span>) 
+pepper_ad <span style="color:#f92672">=</span> AdThreshold(pepper, HSV<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+pepper_ad<span style="color:#f92672">.</span>Ostu()
+pepper_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;pepper Ostu&#39;</span>)
+</code></pre></div><pre><code>Ostu 的阈值为137
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_52_1.png" alt="png"></p>
+<ol start="4">
+<li>灰度图像</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">7.0</span>, <span style="color:#ae81ff">7.0</span>) 
+pepper_ad <span style="color:#f92672">=</span> AdThreshold(pepper, HSV<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+pepper_ad<span style="color:#f92672">.</span>Ostu()
+pepper_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;pepper Ostu&#39;</span>)
+</code></pre></div><pre><code>Ostu 的阈值为117
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_54_1.png" alt="png"></p>
+<ol start="5">
+<li>三通道一同计算直方图+灰度图</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">7.0</span>, <span style="color:#ae81ff">7.0</span>) 
+pepper_ad <span style="color:#f92672">=</span> AdThreshold(pepper, HSV<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>)
+pepper_ad<span style="color:#f92672">.</span>Ostu()
+pepper_ad<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;pepper Ostu&#39;</span>)
+</code></pre></div><pre><code>Ostu 的阈值为110
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_56_1.png" alt="png"></p>
+<p>从视觉上可以看到S通道的效果最好(饱和度), 只有他能将绿色辣椒比较好地分割出来。这是因为图像中不同的目标的饱和度差异更大一些, 如下图所示。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pepper_hsv <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>cvtColor(pepper, cv2<span style="color:#f92672">.</span>COLOR_RGB2HSV)
+pepper_gray <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>cvtColor(pepper, cv2<span style="color:#f92672">.</span>COLOR_RGB2GRAY)
+plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#34;figure.figsize&#34;</span>]<span style="color:#f92672">=</span>(<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">5</span>)
+plt<span style="color:#f92672">.</span>figure()
+plt<span style="color:#f92672">.</span>imshow(pepper)
+plt<span style="color:#f92672">.</span>figure()
+plt<span style="color:#f92672">.</span>imshow(pepper_gray, <span style="color:#e6db74">&#39;gray&#39;</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;gray&#39;</span>)
+plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#34;figure.figsize&#34;</span>]<span style="color:#f92672">=</span>(<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">12</span>)
+plt<span style="color:#f92672">.</span>figure()
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>)
+plt<span style="color:#f92672">.</span>imshow(pepper_hsv[:,:,<span style="color:#ae81ff">0</span>], <span style="color:#e6db74">&#39;gray&#39;</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;H&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>)
+plt<span style="color:#f92672">.</span>imshow(pepper_hsv[:,:,<span style="color:#ae81ff">1</span>], <span style="color:#e6db74">&#39;gray&#39;</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;S&#39;</span>)
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>)
+plt<span style="color:#f92672">.</span>imshow(pepper_hsv[:,:,<span style="color:#ae81ff">2</span>], <span style="color:#e6db74">&#39;gray&#39;</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;V&#39;</span>)
+</code></pre></div><pre><code>Text(0.5, 1.0, 'V')
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_58_1.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_58_2.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_58_3.png" alt="png"></p>
+<h3 id="2-多阈值分割">2. 多阈值分割</h3>
+<h4 id="21-灰度图像">2.1 灰度图像</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">7.0</span>, <span style="color:#ae81ff">5.0</span>) 
+cameraman_ga <span style="color:#f92672">=</span> GA(cameraman, k<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, HSV<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+cameraman_ga<span style="color:#f92672">.</span>forward()
+plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">14.0</span>, <span style="color:#ae81ff">14.0</span>) 
+cameraman_ga<span style="color:#f92672">.</span>MOstu()
+cameraman_ga<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;cameraman&#39;</span>, <span style="color:#ae81ff">1</span>)
+cameraman_ga<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;cameraman histogram&#39;</span>)
+</code></pre></div><pre><code>迭代进度：0.00%
+迭代进度：10.00%
+迭代进度：20.00%
+迭代进度：30.00%
+迭代进度：40.00%
+迭代进度：50.00%
+迭代进度：60.00%
+迭代进度：70.00%
+迭代进度：80.00%
+迭代进度：90.00%
+分成3类
+精英解保持：3
+各个阈值为： [ 70 143]
+最大方差为：3643
+测试用时：1.928911
+最优解出现的代数为：87
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_61_1.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_61_2.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_61_3.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_61_4.png" alt="png"></p>
+<pre><code>&lt;Figure size 1008x1008 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_61_6.png" alt="png"></p>
+<p>多阈值分割的思想是利用遗传算法收缩能够使得类间方差最大的k个阈值, 采用的编码方式十分直觉&mdash;每8位表示一个阈值, k类生成长度为(k-1)*8长的基因序列, 以此为一个个体, 类间方差大的个体适应度越高, 通过交叉变异产生新个体(自适应调整交叉变异概率), 轮盘赌或竞标赛选择新个体, 同时使用精英解保持, 迭代指定代数后输出最优个体。</p>
+<p>可以看到多阈值分割能将cameraman的人、地面、天空同时分割出来, 在直方图显示着阈值分割出三座峰。</p>
+<h4 id="22-彩色图像">2.2 彩色图像</h4>
+<p>由于彩色图像有多种处理方法, 为了简洁, 一下只列出视觉分割效果最优的处理解。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">7.0</span>, <span style="color:#ae81ff">5.0</span>) 
+<span style="color:#75715e">#******改这里, k代表类别数; HSV=0是H通道; HSV=1是S通道; HSV=2是V通道; HSV=3是灰度处理; HSV=4是灰度+三通道统计直方图; *******************</span>
+card_ga <span style="color:#f92672">=</span> GA(card, k<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, HSV<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+<span style="color:#75715e"># 还可以自定义其他超参数：pop_size:种群大小, P_cross:交叉概率, cross_num:交叉结点数量, P_mutation:变异概率, </span>
+<span style="color:#75715e"># adaption:自适应概率调整(1为启动), Generation:迭代代数, elite_num:精英解保持数量</span>
+<span style="color:#75715e">#*********************************</span>
+card_ga<span style="color:#f92672">.</span>forward()
+plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">14.0</span>, <span style="color:#ae81ff">14.0</span>) 
+card_ga<span style="color:#f92672">.</span>MOstu()
+card_ga<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;card&#39;</span>, <span style="color:#ae81ff">1</span>)
+card_ga<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;card histogram&#39;</span>)
+</code></pre></div><pre><code>迭代进度：0.00%
+迭代进度：10.00%
+迭代进度：20.00%
+迭代进度：30.00%
+迭代进度：40.00%
+迭代进度：50.00%
+迭代进度：60.00%
+迭代进度：70.00%
+迭代进度：80.00%
+迭代进度：90.00%
+分成3类
+精英解保持：3
+各个阈值为： [106 212]
+最大方差为：6798
+测试用时：1.742345
+最优解出现的代数为：63
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_66_1.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_66_2.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_66_3.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_66_4.png" alt="png"></p>
+<pre><code>&lt;Figure size 1008x1008 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_66_6.png" alt="png"></p>
+<p>可以看到(使用灰度处理法)白底、蓝字、黑边都被恰当地分割出来。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">7.0</span>, <span style="color:#ae81ff">5.0</span>) 
+color_ga <span style="color:#f92672">=</span> GA(np<span style="color:#f92672">.</span>array(color[:,:,<span style="color:#ae81ff">0</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">*</span><span style="color:#ae81ff">255</span>, np<span style="color:#f92672">.</span>uint8), k<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>, HSV<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, Generation<span style="color:#f92672">=</span><span style="color:#ae81ff">150</span>, pop_size<span style="color:#f92672">=</span><span style="color:#ae81ff">70</span>, P_mutation<span style="color:#f92672">=</span><span style="color:#ae81ff">0.25</span>)
+color_ga<span style="color:#f92672">.</span>forward()
+plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">28.0</span>, <span style="color:#ae81ff">10.0</span>) 
+color_ga<span style="color:#f92672">.</span>MOstu()
+color_ga<span style="color:#f92672">.</span>visualization(<span style="color:#e6db74">&#39;color&#39;</span>, <span style="color:#ae81ff">1</span>)
+color_ga<span style="color:#f92672">.</span>plotHist(<span style="color:#e6db74">&#39;color&#39;</span>)
+</code></pre></div><pre><code>迭代进度：0.00%
+迭代进度：10.00%
+迭代进度：20.00%
+迭代进度：30.00%
+迭代进度：40.00%
+迭代进度：50.00%
+迭代进度：60.00%
+迭代进度：70.00%
+迭代进度：80.00%
+迭代进度：90.00%
+分成6类
+精英解保持：3
+各个阈值为： [ 75 118 159 204 226]
+最大方差为：4618
+测试用时：6.175012
+最优解出现的代数为：106
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_68_1.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_68_2.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_68_3.png" alt="png"></p>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_68_4.png" alt="png"></p>
+<pre><code>&lt;Figure size 2016x720 with 0 Axes&gt;
+</code></pre>
+<p><img src="https://Yangliangzhe.github.io/images/AdThreshold_files/AdThreshold_68_6.png" alt="png"></p>
+<p>可以看到(使用灰度处理法)各种颜色块都被恰当地分割出来。</p>
+<h2 id="四收获与体会">四、收获与体会</h2>
+<p>（1）进一步加深了对阈值分割处理方法的理解。</p>
+<p>（2）体会到了单阈值分割的局限性，实现了多阈值分割，由于没有相关了解，因此靠着猜想实施方案：</p>
+<p>猜想一：类比k-means算法，通过反复迭代求得多阈值。但是该方案可能存在问题，因为k-means的类中心点是独立更新的，不牵扯其他类别，而基本阈值分割算法要通过左右两个类来更新阈值，这就导致中间的类会被左右两个阈值拉扯，收敛性不能保证。</p>
+<p>猜想二：通过扩展Ostu算法，找到多阈值下类间方差最大的解，但随着分类数k增大, 解空间迅速膨胀，因此不宜再采用Ostu的暴力遍历方法。因此选用遗传算法来搜索最优解。</p>
+<p>(3) 这次的代码量巨大，考虑的情况颇多，但都逐个实现并封装成类，收获颇丰。</p>
+<p>实验代码见：
+<em><a href="https://github.com/Yangliangzhe/Image-Processing">https://github.com/Yangliangzhe/Image-Processing</a></em></p>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://Yangliangzhe.github.io/cause/filters/" data-tooltip="图像平滑滤波" aria-label="上一篇: 图像平滑滤波">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="分享这个帖子">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://Yangliangzhe.github.io/cause/adthreshold/" title="分享到 Facebook" aria-label="分享到 Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://Yangliangzhe.github.io/cause/adthreshold/" title="分享到 Twitter" aria-label="分享到 Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://Yangliangzhe.github.io/cause/adthreshold/" title="分享到 Linkedin" aria-label="分享到 Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="发表评论">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="回到顶部">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/Yangliangzhe.github.io\/cause\/adthreshold\/';
+        
+          this.page.identifier = '\/cause\/adthreshold\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'tranquilpeak';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2022 LiangZhe Yang. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="1">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://Yangliangzhe.github.io/cause/filters/" data-tooltip="图像平滑滤波" aria-label="上一篇: 图像平滑滤波">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="分享这个帖子">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://Yangliangzhe.github.io/cause/adthreshold/" title="分享到 Facebook" aria-label="分享到 Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://Yangliangzhe.github.io/cause/adthreshold/" title="分享到 Twitter" aria-label="分享到 Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://Yangliangzhe.github.io/cause/adthreshold/" title="分享到 Linkedin" aria-label="分享到 Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="发表评论">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="回到顶部">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="1">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FYangliangzhe.github.io%2Fcause%2Fadthreshold%2F" aria-label="分享到 Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2FYangliangzhe.github.io%2Fcause%2Fadthreshold%2F" aria-label="分享到 Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2FYangliangzhe.github.io%2Fcause%2Fadthreshold%2F" aria-label="分享到 Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>分享到 Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://Yangliangzhe.github.io/images/profile.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">LiangZhe Yang</h4>
+    
+      <div id="about-card-bio">I am interested in Computer Vision and have a broad study on it</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-phone-alt"></i>
+        <br/>
+        18507950158
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-envelope"></i>
+        <br/>
+        1369438244@qq.com
+      </div>
+    
+    
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://Yangliangzhe.github.io/images/background.png');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://Yangliangzhe.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

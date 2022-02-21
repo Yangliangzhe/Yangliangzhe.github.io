@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/Yangliangzhe.github.io",
+  "author": {
+    "@type": "Person",
+    "name": "LiangZhe Yang",
+    
+    "image": "https://Yangliangzhe.github.io/images/profile.jpg"
+    
+  },
+  "name":"YangLiangZhe\u0027s blog",
+  "description":"\u003cp\u003e这是一个基于plotly与flask搭建的综合图像处理系统。\u003c\/p\u003e",
+  "url":"https:\/\/Yangliangzhe.github.io\/home\/%E7%BB%BC%E5%90%88%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F\/",
+  "keywords":"[]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.92.0 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="LiangZhe Yang">
+<meta name="keywords" content="">
+<meta name="description" content="这是一个基于plotly与flask搭建的综合图像处理系统。">
+
+
+<meta property="og:description" content="这是一个基于plotly与flask搭建的综合图像处理系统。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="综合图像处理系统">
+<meta name="twitter:title" content="综合图像处理系统">
+<meta property="og:url" content="https://Yangliangzhe.github.io/home/%E7%BB%BC%E5%90%88%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F/">
+<meta property="twitter:url" content="https://Yangliangzhe.github.io/home/%E7%BB%BC%E5%90%88%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F/">
+<meta property="og:site_name" content="YangLiangZhe&#39;s blog">
+<meta property="og:description" content="这是一个基于plotly与flask搭建的综合图像处理系统。">
+<meta name="twitter:description" content="这是一个基于plotly与flask搭建的综合图像处理系统。">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2021-12-26T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2021-12-26T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="项目">
+    
+      <meta property="article:section" content="课程项目">
+    
+  
+  
+    
+      <meta property="article:tag" content="图像处理">
+    
+      <meta property="article:tag" content="web开发">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://Yangliangzhe.github.io/images/profile.jpg">
+  <meta property="twitter:image" content="https://Yangliangzhe.github.io/images/profile.jpg">
+
+
+
+
+  <meta property="og:image" content="https://Yangliangzhe.github.io/images/IPS.jpg">
+  <meta property="twitter:image" content="https://Yangliangzhe.github.io/images/IPS.jpg">
+
+
+  <meta property="og:image" content="https://Yangliangzhe.github.io/images/IPS2.jpg">
+  <meta property="twitter:image" content="https://Yangliangzhe.github.io/images/IPS2.jpg">
+
+
+    <title>综合图像处理系统</title>
+
+    <link rel="icon" href="https://Yangliangzhe.github.io/images/logo.png">
+    
+
+    
+
+    <link rel="canonical" href="https://Yangliangzhe.github.io/home/%E7%BB%BC%E5%90%88%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://Yangliangzhe.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+    
+    
+
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://Yangliangzhe.github.io/" aria-label="去首页">YangLiangZhe&#39;s blog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://Yangliangzhe.github.io/#about" aria-label="打开链接: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://Yangliangzhe.github.io/images/profile.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://Yangliangzhe.github.io/#about" aria-label="阅读有关作者的更多信息">
+          <img class="sidebar-profile-picture" src="https://Yangliangzhe.github.io/images/profile.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">LiangZhe Yang</h4>
+        
+          <h5 class="sidebar-profile-bio">I am interested in Computer Vision and have a broad study on it</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/home" title="主页">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">主页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/cause" title="课程">
+    
+      <i class="sidebar-button-icon fas fa-atlas" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">课程</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/project" title="项目">
+    
+      <i class="sidebar-button-icon far fa-calendar-alt" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">项目</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/paper" title="论文">
+    
+      <i class="sidebar-button-icon fas fa-sticky-note" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">论文</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/tags" title="标签">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/categories" title="类别">
+    
+      <i class="sidebar-button-icon fas fa-code-branch" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">类别</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.zhihu.com/people/fang-xue-che" target="_blank" rel="noopener" title="博客">
+    
+      <i class="sidebar-button-icon far fa-blog" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">博客</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Yangliangzhe" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://Yangliangzhe.github.io/#about" title="名片">
+    
+      <i class="sidebar-button-icon fas fa-address-card" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">名片</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('/images/IPS.jpg')"
+       data-behavior="4">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      综合图像处理系统
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2021-12-26T00:00:00Z">
+        
+  十二月 26, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://Yangliangzhe.github.io/categories/%e9%a1%b9%e7%9b%ae">项目</a>, 
+    
+      <a class="category-link" href="https://Yangliangzhe.github.io/categories/%e8%af%be%e7%a8%8b%e9%a1%b9%e7%9b%ae">课程项目</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="4"
+        class="hasCover
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>这是一个基于plotly与flask搭建的综合图像处理系统。</p>
+<hr>
+<h2 id="一ensp研究背景">一、 研究背景</h2>
+<p>随着计算机视觉广泛的应用，越来越多的研究人员开始投入到图像处理的研究工作中。在众多工具中，OpenCV因其独特的性质受到大多数研究者的追捧：</p>
+<ol>
+<li>开源，能在Windows、Linux、嵌入式系统等平台上编译执行。</li>
+<li>接口丰富，支持C、JAVA、Python等主流编程语言。</li>
+<li>函数全面，满足图像处理的基本需求。</li>
+</ol>
+<p>然而，研究者，在利用OpenCV进行各种图像处理的验证性实验时，往往需要自行编写代码实现。这种方式，代码极易不规范且重复率高，交互式体验差，增加了工作人员的工作量，影响研究的推进。<br>
+在这种背景下，我们小组提出设计一个具有拓展性的综合性图像处理系统，以协助研究人员完成图像处理相关的开发工作。</p>
+<hr>
+<h2 id="二ensp技术现状">二、 技术现状</h2>
+<p>计算机应用发展至今，已有许多成熟的图像处理软件</p>
+<h3 id="21enspadobe">2.1 Adobe</h3>
+<p>Adobe旗下有许多为人熟知的图像处理软件。</p>
+<ol>
+<li>Photoshop<br>
+从功能上看，该软件可分为图像编辑、图像合成、校色调色及功能色效制作部分等。 
+图像编辑是图像处理的基础，可以对图像做各种变换如放大、缩小、旋转、倾斜、镜像、透视等；也可进行复制、去除斑点、修补、修饰图像的残损等。
+图像合成则是将几幅图像通过图层操作、工具应用合成完整的、传达明确意义的图像，这是美术设计的必经之路；该软件提供的绘图工具让外来图像与创意很好地融合。
+校色调色可方便快捷地对图像的颜色进行明暗、色偏的调整和校正，也可在不同颜色进行切换以满足图像在不同领域如网页设计、印刷、多媒体等方面应用。
+特效制作在该软件中主要由滤镜、通道及工具综合应用完成。包括图像的特效创意和特效字的制作，如油画、浮雕、石膏画、素描等常用的传统美术技巧都可藉由该软件特效完成。</li>
+<li>Premiere Pro<br>
+Premiere Pro是视频编辑爱好者和专业人士必不可少的视频编辑工具。它可以提升工作者的创作能力和创作自由度，它是易学、高效、精确的视频剪辑软件。Premiere提供了采集、剪辑、调色、美化音频、字幕添加、输出、DVD刻录的一整套流程，并和其他Adobe软件高效集成，使工作者足以完成在编辑、制作、工作流上遇到的所有挑战，满足创建高质量作品的要求。</li>
+<li>Illustrator<br>
+Illustrator是一款专业图形设计工具，提供丰富的像素描绘功能以及顺畅灵活的矢量图编辑功能，能够快速创建设计工作流程。借助Expression Design，可以为屏幕/网页或打印产品创建复杂的设计和图形元素。提供了一些相当典型的矢量图形工具，诸如三维原型（primitives）、多边形（polygons）和样条曲线（splines），一些常见的操作从这里都能被发现。</li>
+</ol>
+<h3 id="22ensp开源图像处理软件">2.2 开源图像处理软件</h3>
+<p>在开源社区中也有许多功能强大的图像处理软件。</p>
+<ol>
+<li>GIMP<br>
+GIMP 功能十分强大，扩展性强，是编辑和处理照片的绝佳选择。它具有许多用于转换、更改和重新排列图像的选项。GIMP 有许多第三方插件，还可通过 Python 扩展，您可以在线找到脚本，也可以编写自己的脚本。这种脚本编写潜力为GIMP高级用户带来了全新的控制级别。</li>
+<li>Krita<br>
+Krita 是一款自由、免费、开源的专业绘画软件。它由懂得画画的程序员们开发，目标是打造一款人人都用得起的数字绘画工具。适用于：概念美术设计、材质与电影布景、插画和漫画等。Krita 允许艺术家用自己的手和平板电脑或使用鼠标和键盘来创作自己喜欢的艺术作品</li>
+<li>Inkscape<br>
+Inkscape是开源的 矢量图像 编辑软件，与Illustrator、Freehand、CorelDraw、Xara X 等软件很相似，它使用 W3C 标准的 SVG 文件格式，支持包括形状、路径、文本、标记、克隆、alpha 混合、变换、渐变、图案、组合等 SVG特性。它也支持创作共用的元数据、节点编辑、 图层 、复杂的路径运算、位图描摹(根据点阵16进制色差复制绘制矢量图的算法)、文本绕路径、流动文本、直接编辑 XML 等。它可以导入JPEG 、PNG 、TIFF 等格式，并输出为 PNG 和多种位图格式。除了支持Windows外，Inkscape 还支持 Linux 与 macOS 平台 。</li>
+</ol>
+<hr>
+<h2 id="三ensp研究内容">三、 研究内容</h2>
+<h3 id="31-ensp图像处理技术">3.1  图像处理技术</h3>
+<p>研究广泛应用于图像处理中的技术</p>
+<ol>
+<li>图像变换: 
+实现图像的灰度变换、傅立叶变换、DCT变换、霍夫变换。</li>
+<li>空间滤波: 
+实现平滑空间滤波器、锐化空间滤波器、基于规则的模糊集合的对比度增强。</li>
+<li>彩色图像处理: 
+实现假彩色与伪彩色。</li>
+<li>图像恢复与复原: 
+实现基于退化模型的图像恢复，以及基于CT的图像复原。</li>
+<li>图像分割: 
+实现基于边缘检测、阈值处理、区域生长、形态学分水岭的图像分割技术。</li>
+</ol>
+<h3 id="32-enspgui制作技术">3.2  GUI制作技术</h3>
+<ol>
+<li>
+<p>预期GUI布局
+<img src="https://Yangliangzhe.github.io/images/IPS/design.png" alt="Tranquilpeak"></p>
+</li>
+<li>
+<p>控件设计要点
+<img src="https://Yangliangzhe.github.io/images/IPS/design2.png" alt="Tranquilpeak"></p>
+</li>
+</ol>
+<hr>
+<h2 id="四ensp研究目标">四、 研究目标</h2>
+<ol>
+<li>支持多种图像格式；</li>
+<li>实现图像变换、图像对比度增强、图像平滑、图像锐化、假彩色与伪彩色、图像恢复、图像分割等具体功能；</li>
+<li>系统具有扩充性，便于后续添加独立的模块</li>
+</ol>
+<hr>
+<h2 id="五ensp设计方案">五、 设计方案</h2>
+<h3 id="51-ensp结构分层">5.1  结构分层</h3>
+<p>考虑到系统的可移植性和可扩展性，总体系统采用B/S架构，将用户交互在浏览器上实现，而数据处理以及系统响应在服务器上运行。
+系统以三层结构实现：<br>
+第一层，应用层。主要是Web界面的设计，用户输入输出的检查，以及交互指令的响应。<br>
+第二层，公用层。用于图片数据、操作数据的存储以及管理，调配应用层与处理层的接口，是整个系统的核心。<br>
+第三层，处理层。各类图像处理函数。
+<img src="https://Yangliangzhe.github.io/images/IPS/pattern.png" alt="Tranquilpeak"></p>
+<h3 id="52-ensp技术分析">5.2  技术分析</h3>
+<ol>
+<li>
+<p> <strong>Web界面设计</strong><br>
+系统应具有可与用户进行交互的可视化界面，支持图片的下载、上传，各种图像操作，辅助分析，以及图像显示等功能。<br>
+Plotly是一个免费的可视化库。plotly.js是基于JavaScript的图形绘制库，而dash则是基于flask和plotly.js的web开发框架，支持使用python语言进行web开发。系统主要采用了两个组件库，dash.dcc和dash.html。使用plotly提供的方式进行编程，可以使用python代码生成与html+javaScript同样效果的网页，也支持使用CSS进行网页布局。</p>
+</li>
+<li>
+<p> <strong>Web界面与服务器的交互</strong><br>
+B/S架构下，应及时将Web界面的交互信息传输到服务器端，并做出相应的响应，且支持多个用户会话同时进行。<br>
+Dash利用flask生成服务，通过@app.前缀定义web界面响应函数，将交互信息传输到服务器端。在发送给用户的html中添加uid，以此来识别用户身份，完成对应响应。</p>
+</li>
+<li>
+<p> <strong>数据的存储管理</strong><br>
+可对输入图像、输入参数、处理结果进行存储，同时具备一定的回溯功能。<br>
+数据的存储分为两部分。</p>
+<p>（a）是服务器端的文件管理系统。用户上传的图片存储在服务器端的文件管理系统中，并基于该次会话的uid命名，并创建另一个图片文件，用于保存图像处理的最新结果。利用flask，用户可以将最新结果下载下来。<br>
+（b）是html中的用户数据。包括uid、会话进行的历史操作、图片更新时间，都以base64的编码方式存储在用户端的html文件中。服务器可以通过读取用户端html文件来解析对应内容，实现相关操作。</p>
+</li>
+<li>
+<p> <strong>系统可扩展性</strong><br>
+在系统的开发过程中，三层的实现互不干扰，通过少量的代码修改，即可添加系统支持的图像处理函数。</p>
+</li>
+</ol>
+<hr>
+<h2 id="六结果展示">六、结果展示</h2>
+<p>设备：PC一台<br>
+环境：部署在docker容器中的ubuntu镜像<br>
+配置：python、flask、plotly.dash、Edge浏览器</p>
+<h3 id="61-ensp测试过程及结果">6.1  测试过程及结果</h3>
+<p>（1）系统启动测试<br>
+<img src="https://Yangliangzhe.github.io/images/IPS/ipsys.png" alt="Tranquilpeak">
+启动正常，在浏览器中访问交互界面，并能够显示默认图片。<br>
+（2）数据交互测试<br>
+上传图片，主界面图片切换，且自动生成新的直方图。
+<img src="https://Yangliangzhe.github.io/images/IPS/ipsys2.png" alt="Tranquilpeak">
+进行单个图像操作后，完成对应响应。
+<img src="https://Yangliangzhe.github.io/images/IPS/ipsys3.png" alt="Tranquilpeak">
+点击下载，网页成功跳转到下载界面。
+连续使用多个图像处理操作，并进行撤回和前进操作，符合预期效果。(限于篇幅，不具体展示)<br>
+（3）图像处理函数功能测试<br>
+依次检测预置的图像处理函数，输出结果符合预期。(限于篇幅，不具体展示)<br>
+（4）辅助分析功能测试<br>
+直方图变换
+<img src="https://Yangliangzhe.github.io/images/IPS/iphis.png" alt="Tranquilpeak">
+DFT变换
+<img src="https://Yangliangzhe.github.io/images/IPS/ipdft.png" alt="Tranquilpeak">
+DCT变换
+<img src="https://Yangliangzhe.github.io/images/IPS/ipdct.png" alt="Tranquilpeak"></p>
+<blockquote>
+<p>我们组在此课程项目中完成了整套系统的开发，涉及前端和后端的开发，由用户交互到系统响应，由数据存储管理到数据处理，实现了交互良好、支持多种图片格式和图像操作、具有辅助分析功能、有一定扩展性的综合图像处理系统。</p>
+</blockquote>
+<p>项目代码：
+<em><a href="https://github.com/Yangliangzhe/Comprehensive-Image-Processing-System">https://github.com/Yangliangzhe/Comprehensive-Image-Processing-System</a></em></p>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://Yangliangzhe.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a>
+
+  <a class="tag tag--primary tag--small" href="https://Yangliangzhe.github.io/tags/web%E5%BC%80%E5%8F%91/">web开发</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://Yangliangzhe.github.io/home/%E9%81%A5%E6%84%9F%E5%BD%B1%E5%83%8F%E8%AF%86%E5%88%AB/" data-tooltip="遥感影像识别" aria-label="下一篇: 遥感影像识别">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://Yangliangzhe.github.io/home/adthreshold/" data-tooltip="基于阈值的图像分割" aria-label="上一篇: 基于阈值的图像分割">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="分享这个帖子">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://Yangliangzhe.github.io/home/%E7%BB%BC%E5%90%88%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F/" title="分享到 Facebook" aria-label="分享到 Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://Yangliangzhe.github.io/home/%E7%BB%BC%E5%90%88%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F/" title="分享到 Twitter" aria-label="分享到 Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://Yangliangzhe.github.io/home/%E7%BB%BC%E5%90%88%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F/" title="分享到 Linkedin" aria-label="分享到 Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="发表评论">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="回到顶部">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/Yangliangzhe.github.io\/home\/%E7%BB%BC%E5%90%88%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F\/';
+        
+          this.page.identifier = '\/home\/%E7%BB%BC%E5%90%88%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'tranquilpeak';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2022 LiangZhe Yang. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://Yangliangzhe.github.io/home/%E9%81%A5%E6%84%9F%E5%BD%B1%E5%83%8F%E8%AF%86%E5%88%AB/" data-tooltip="遥感影像识别" aria-label="下一篇: 遥感影像识别">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://Yangliangzhe.github.io/home/adthreshold/" data-tooltip="基于阈值的图像分割" aria-label="上一篇: 基于阈值的图像分割">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="分享这个帖子">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://Yangliangzhe.github.io/home/%E7%BB%BC%E5%90%88%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F/" title="分享到 Facebook" aria-label="分享到 Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://Yangliangzhe.github.io/home/%E7%BB%BC%E5%90%88%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F/" title="分享到 Twitter" aria-label="分享到 Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://Yangliangzhe.github.io/home/%E7%BB%BC%E5%90%88%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F/" title="分享到 Linkedin" aria-label="分享到 Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="发表评论">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="回到顶部">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FYangliangzhe.github.io%2Fhome%2F%25E7%25BB%25BC%25E5%2590%2588%25E5%259B%25BE%25E5%2583%258F%25E5%25A4%2584%25E7%2590%2586%25E7%25B3%25BB%25E7%25BB%259F%2F" aria-label="分享到 Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2FYangliangzhe.github.io%2Fhome%2F%25E7%25BB%25BC%25E5%2590%2588%25E5%259B%25BE%25E5%2583%258F%25E5%25A4%2584%25E7%2590%2586%25E7%25B3%25BB%25E7%25BB%259F%2F" aria-label="分享到 Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2FYangliangzhe.github.io%2Fhome%2F%25E7%25BB%25BC%25E5%2590%2588%25E5%259B%25BE%25E5%2583%258F%25E5%25A4%2584%25E7%2590%2586%25E7%25B3%25BB%25E7%25BB%259F%2F" aria-label="分享到 Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>分享到 Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://Yangliangzhe.github.io/images/profile.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">LiangZhe Yang</h4>
+    
+      <div id="about-card-bio">I am interested in Computer Vision and have a broad study on it</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-phone-alt"></i>
+        <br/>
+        18507950158
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-envelope"></i>
+        <br/>
+        1369438244@qq.com
+      </div>
+    
+    
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://Yangliangzhe.github.io/images/background.png');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://Yangliangzhe.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
